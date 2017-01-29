@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Salon Kapster 1</title>
+    <title>Salon Kapster 3</title>
 
 </head>
 <style>
