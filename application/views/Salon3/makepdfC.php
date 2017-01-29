@@ -28,7 +28,7 @@
 class MYPDF extends TCPDF {
 
   public function Header(){
-     $html = '<b>Salon Kapster 2 <br>Gaji Kapster</b> <br><p style="border-bottom: 2px solid black;"></p>';
+     $html = '<b>Salon Kapster 3 <br>Gaji Kapster</b> <br><p style="border-bottom: 2px solid black;"></p>';
      $this->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 1, $fill = 0, $reseth = true, $align = 'top', $autopadding = true);
   }
 }
