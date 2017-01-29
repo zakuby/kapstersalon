@@ -314,7 +314,7 @@ class Admin extends CI_Controller {
 		$this->load->library('Pdf');
 		$this->load->view('Salon3/makepdf.php');
 	}
-	public function printNota(){
+	public function createPDFCashier(){
 		$data['nama_kasir'] = $this->input->post("nama_kasir");
 		$data['nama_customer'] = $this->input->post("nama_customer");
 		$data['total_harga'] = $this->input->post("total_harga");
