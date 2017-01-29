@@ -1,4 +1,4 @@
 RewriteEngine on
-RewriteBase /CI
+RewriteBase /
 RewriteCond $1 !^(index\.php|assets)
 RewriteRule ^(.*)$ index.php/$1 [L]
