@@ -315,15 +315,13 @@ class Admin extends CI_Controller {
 		$this->load->view('Salon3/makepdf.php');
 	}
 	public function createPDFCashier(){
-		$data['nama_kasir'] = $this->input->post("nama_kasir");
-		$data['nama_customer'] = $this->input->post("nama_customer");
-		$data['total_harga'] = $this->input->post("total_harga");
-		$data['payment_method'] = $this->input->post("payment_method");
-		$data['persen_pajak'] = $this->input->post("persen_pajak");
-		$data['discount_harga'] = $this->input->post("discount_harga");	
-		$data['product'] = $this->input->post("array_product");
-		$data['harga'] = $this->input->post("array_harga");
+		$this->load->model('Salon3/produk_model');
+		$this->load->model('Salon3/kapster_model');
+		$transaksi = $this->produk_model->loadTransaksiCashier($_SESSION["nama"],$_SESSION["first_date"],$_SESSION["second_date"]);
+		$this->load->vars('t', $transaksi);
+		$cashier = $this->kapster_model->getCashier($_SESSION["nama"]);
+		$this->load->vars('c', $cashier);
 		$this->load->library('Pdf');
-		$this->load->view('makeNota.php', $data);
+		$this->load->view('Salon3/makepdfC.php');
 	}	
 }
