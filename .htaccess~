@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteBase /photogram
+RewriteCond $1 !^(index\.php|assets)
+RewriteRule ^(.*)$ index.php/$1 [L]

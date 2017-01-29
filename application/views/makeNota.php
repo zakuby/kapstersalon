@@ -1,0 +1,163 @@
+<?php
+//============================================================+
+// File name   : example_048.php
+// Begin       : 2009-03-20
+// Last Update : 2013-05-14
+//
+// Description : Example 048 for TCPDF class
+//               HTML tables and table headers
+//
+// Author: Nicola Asuni
+//
+// (c) Copyright:
+//               Nicola Asuni
+//               Tecnick.com LTD
+//               www.tecnick.com
+//               info@tecnick.com
+//============================================================+
+
+/**
+ * Creates an example PDF TEST document using TCPDF
+ * @package com.tecnick.tcpdf
+ * @abstract TCPDF - Example: HTML tables and table headers
+ * @author Nicola Asuni
+ * @since 2009-03-20
+ */
+
+// Include the main TCPDF library (search for installation path).
+class MYPDF extends TCPDF {
+
+  public function Header(){
+     $html = '<b>MICHIKA SALON</b><p style="border-bottom: 2px solid black;"></p>';
+     $this->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 1, $fill = 0, $reseth = true, $align = 'top', $autopadding = true);
+  }
+}
+
+// create new PDF document
+$width = 250;  
+$height = 375; 
+$pageLayout = array($width, $height); //  or array($height, $width) 
+$pdf = new MYPDF('p', 'pt', $pageLayout, true, 'UTF-8', false);
+//$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+// set document information
+$pdf->SetCreator(PDF_CREATOR);
+$pdf->SetAuthor('Admin');
+$pdf->SetTitle('Nota');
+$pdf->SetSubject('Nota');
+$pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+
+// set default header data
+$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.'', PDF_HEADER_STRING);
+
+// set header and footer fonts
+$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+// set default monospaced font
+$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+// set margins
+$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+// set auto page breaks
+$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+// set image scale factor
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+// set some language-dependent strings (optional)
+if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
+	require_once(dirname(__FILE__).'/lang/eng.php');
+	$pdf->setLanguageArray($l);
+}
+
+// ---------------------------------------------------------
+
+// set font
+$pdf->SetFont('helvetica', 'B', 20);
+
+// add a page
+$pdf->AddPage();
+
+$pdf->Write(0, '', '', 0, 'L', true, 0, false, false, 0);
+
+$pdf->SetFont('helvetica', '', 10);
+
+// -----------------------------------------------------------------------------
+
+$tb1 = '<style>
+	.centerbox{
+		margin-left: 130px;
+		width: 450px;
+	}
+	.loginbox{
+		margin: 10px;
+		margin-left: 130px;
+		width: 950px;
+	}
+table {
+    border:1px solid #CCC;
+    border-collapse:collapse;
+}
+	td {
+		border: none;
+		background-color: #ffffee;
+	}
+.bg-black {
+  color: #ffffff;
+}
+</style>';
+
+$tb1 .= 'Cashier&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: '.$nama_kasir;
+$tb1 .= '<br>Customer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: '.$nama_customer;
+$tb1 .= '<br>Time&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: '.date("d F Y");
+$tb1 .= '<br>Payment Type&nbsp;: '.$payment_method;
+$tb1 .= '<br><br><br><br><table border="1" id="example2" class="table ">
+            <thead>
+                <tr>
+                  <th><b>Nama Product</b></th>
+				  <th><b>Harga</b></th>
+                </tr>
+             </thead>
+             <tbody>';
+$product_explode = explode(",",$product);
+$harga_explode = explode(",",$harga);
+foreach(array_slice($product_explode, 1) as $index => $p){
+    $tb1 .= '<tr>';
+    $tb1 .= '<td>'.$p.'</td>';
+    $tb1 .= '<td>'.$harga_explode[$index+1].'</td>';
+	$tb1 .= '</tr>';	
+}
+$tb1 .=  '<tr class="bg-black">';
+$tb1 .=  '<td bgcolor="#8e8d8d" >Discount</td>';
+$tb1 .=  '<td bgcolor="#8e8d8d" >Rp '.number_format( $discount_harga, 0 , '' , '.' ).'</td>';
+$tb1 .=  '</tr>';	
+$total = (int)$total_harga;
+$total = $total - $discount_harga;
+
+if($persen_pajak!="kosong"){
+	$pajak = ($total * ((int)$persen_pajak/100));
+	$tb1 .=  '<tr class="bg-black">';
+	$tb1 .=  '<td bgcolor="#8e8d8d" >Pajak</td>';
+	$tb1 .=  '<td bgcolor="#8e8d8d" >Rp '.number_format( $pajak, 0 , '' , '.' ).'</td>';
+	$tb1 .=  '</tr>';	
+	$total = $total + $pajak;
+}
+$tb1 .=  '<tr class="bg-black">';
+$tb1 .=  '<td bgcolor="#8e8d8d" class="table-danger borderless">Total</td>';
+$tb1 .=  '<td bgcolor="#8e8d8d">Rp ' . number_format( $total, 0 , '' , '.' ) .'</td>';
+$tb1 .=  '</tr>';	
+$tb1 .= '</tbody></table>';
+$pdf->writeHTML($tb1, true, false, false, false, '');
+
+// -----------------------------------------------------------------------------
+
+//Close and output PDF document
+$pdf->Output('nota.pdf', 'I');
+
+//============================================================+
+// END OF FILE
+//============================================================+
