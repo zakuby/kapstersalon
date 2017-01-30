@@ -249,12 +249,15 @@ public function kapster3()
 		$data['nama_customer'] = $this->input->post("nama_customer");
 		$data['total_harga'] = $this->input->post("total_harga");
 		$data['payment_method'] = $this->input->post("payment_method");
+		$data['tunai'] = $this->input->post("total_tunai");
 		$data['persen_pajak'] = $this->input->post("persen_pajak");
 		$data['discount_harga'] = $this->input->post("discount_harga");	
 		$data['product'] = $this->input->post("array_product");
 		$data['harga'] = $this->input->post("array_harga");
+		$data['kapster'] = $this->input->post("array_kapster");
+		$data['category'] = $this->input->post("array_category");
 		$this->load->library('Pdf');
 		$this->load->view('makeNota.php', $data);
-	}		 
+	}			 
 	
 }

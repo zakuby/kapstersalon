@@ -166,6 +166,7 @@
                   <th>Nama Kapster</th>
                   <th>Jenis Perawatan</th>
                   <th>Nama Perawatan</th>
+				  <th>Category</th>
                   <th>Harga</th>
                   <th>Action</th>
                 </tr>
@@ -173,7 +174,7 @@
                 <tbody id="template-tr">
 				</tbody>
 				<tr>
-					<td class="bg-black"style="border-right-width: 0px;" colspan="4"><b>Total</b></td>
+					<td class="bg-black"style="border-right-width: 0px;" colspan="5"><b>Total</b></td>
 					<td class="bg-black" style="border-left-width: 0px;font-weight:bold;" colspan="2" id="total_table"></td>
 					<td style="display:none;" id="total_invis"></td>
 				</tr>
@@ -186,11 +187,14 @@
 					<input name="nama_kasir" id="nama_cashier"/>
 					<input name="nama_customer" id="nama_customer"/>
 					<input name="total_harga" id="totalHarga"/>
+					<input name="total_tunai" id="totalTunai"/>
 					<input name="payment_method" id="payment_method"/>
 					<input name="persen_pajak" id="persenPajak"/>
 					<input name="discount_harga" id="discountHarga" />
 					<input name="array_product" id="namaproductArr"/>
+					<input name="array_kapster" id="namakapsterArr"/>
 					<input name="array_harga" id="hargaArr"/>
+					<input name="array_category" id="categoryArr"/>
 				</form>
 				<a href="#" style="display:none;" id="example4" class="btn btn-primary pull-right" onclick="saveNota(event)" target="_blank">Print PDF</a>
 			</div>
@@ -217,12 +221,16 @@ function saveNota(e){
 	e.preventDefault()
 	var namaProduks = "ignore";
 	var hargaProduks = "ignore";
+	var categoryProduks = "ignore";
+	var namaKapsters = "ignore";
+	var kapsterNameArr = [];
 	if(konfirmasiNominal(event)!=false && $("#nama-customer").val()!="" && document.querySelector('input[name="optionsRadios"]:checked').value!=null){
 		document.getElementById("nama-customer").style.borderColor = "#cccccc";
 		document.getElementById("nama_cashier").value = $("#nama-cashier option:selected").html();
 		document.getElementById("nama_customer").value = $("#nama-customer").val();
 		document.getElementById("payment_method").value = document.querySelector('input[name="optionsRadios"]:checked').value;
 		document.getElementById("totalHarga").value = $("#total_invis").html();
+		document.getElementById("totalTunai").value = Number($("#nominal_uang").val());
 		if($("#pajak-harga option:selected").val()!=null){
 			document.getElementById("persenPajak").value = $("#pajak-harga option:selected").val();
 		}else{
@@ -232,11 +240,24 @@ function saveNota(e){
 
 		$("#template-tr tr").each(function(index,tr){
 			var tds = $(tr).find("td")
+			kapsterNameArr.push($(tds).eq(5).html())
 			namaProduks = namaProduks + "," + $(tds).eq(7).html();
-			hargaProduks = hargaProduks + "," + $(tds).eq(8).html();
+			hargaProduks = hargaProduks + "," + $(tds).eq(9).html();
+			categoryProduks = categoryProduks + "," + $(tds).eq(8).html();
 		})
+		var uniqueNames = [];
+		$.each(kapsterNameArr, function(i, el){
+			if($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
+		});
+		console.log(uniqueNames);
+		$.each(uniqueNames, function(i, el){
+			namaKapsters = namaKapsters + "," + el;
+		});
 		document.getElementById("namaproductArr").value = namaProduks;
-		document.getElementById("hargaArr").value = hargaProduks;		
+		document.getElementById("hargaArr").value = hargaProduks;	
+		document.getElementById("namakapsterArr").value = namaKapsters;
+		console.log($("#namakapsterArr").val())
+		document.getElementById("categoryArr").value = categoryProduks;		
 		printContent(event);
 	}else if($("#nama-customer").val()==""){
 		document.getElementById("nama-customer").style.borderColor = "red";
@@ -257,10 +278,10 @@ function pilih_produk(d) {
 		$(d).closest(".parent-product").find(".harga-product").html(
 			'<br><select class="pilihan-harga form-control">'
 			+'<option value="">-Pilih Harga-</option>'
-			+"<option value='"+selected.data('harga_ss')+"'>SS&nbsp;:&nbsp;Rp "+konversRupiah(selected.data('harga_ss'))+"</option>"
-			+"<option value='"+selected.data('harga_s')+"'>S&nbsp;&nbsp;&nbsp;:&nbsp;Rp "+konversRupiah(selected.data('harga_s'))+"</option>"
-			+"<option value='"+selected.data('harga_m')+"'>M&nbsp;&nbsp;:&nbsp;Rp "+konversRupiah(selected.data('harga_m'))+"</option>"
-			+"<option value='"+selected.data('harga_l')+"'>L&nbsp;&nbsp;&nbsp;:&nbsp;Rp "+konversRupiah(selected.data('harga_l'))+"</option>"
+			+"<option data-ukuran='SS' value='"+selected.data('harga_ss')+"'>SS&nbsp;:&nbsp;Rp "+konversRupiah(selected.data('harga_ss'))+"</option>"
+			+"<option data-ukuran='S' value='"+selected.data('harga_s')+"'>S&nbsp;&nbsp;&nbsp;:&nbsp;Rp "+konversRupiah(selected.data('harga_s'))+"</option>"
+			+"<option data-ukuran='M' value='"+selected.data('harga_m')+"'>M&nbsp;&nbsp;:&nbsp;Rp "+konversRupiah(selected.data('harga_m'))+"</option>"
+			+"<option data-ukuran='L' value='"+selected.data('harga_l')+"'>L&nbsp;&nbsp;&nbsp;:&nbsp;Rp "+konversRupiah(selected.data('harga_l'))+"</option>"
 			+"</select>"
 		)	
 	}else{
@@ -285,7 +306,8 @@ function submitSelection(e){
 		var kapsterName = kapster.data("name")
 		$(".kapster-product").each(function(index,kapster){
 		 $(kapster).find(".parent-product").each(function(index2,inputKep){
-			var harga = $(inputKep).find(".pilihan-harga").val()
+			var harga = $(inputKep).find(".pilihan-harga option:selected").val()
+			var ukuran = $(inputKep).find(".pilihan-harga option:selected").data("ukuran")
 			var id = $(inputKep).find(".pilihan-produk option:selected").val()
 			var produk = $(inputKep).find(".pilihan-produk option:selected").data("produk")
 			var jenis = $(inputKep).find(".pilihan-produk  option:selected").data("jenis")
@@ -300,7 +322,7 @@ function submitSelection(e){
 				$("#example3").fadeIn()
 				$("#example4").fadeIn()
 				$("#Customer").fadeIn()			
-				addRow(id,kapsterID,kapsterName,cashierID,cashierName,jenis,produk,harga)
+				addRow(id,kapsterID,kapsterName,cashierID,cashierName,jenis,produk,harga,ukuran)
 			}
 			if(kapsterID==""){
 				document.getElementById("kapsterName").style.borderColor = "red";
@@ -324,7 +346,7 @@ function konversRupiah(price){
 	
 }
 
-function addRow(id,kapsterID,kapsterName,cashierID,cashierName,type,name,price){	
+function addRow(id,kapsterID,kapsterName,cashierID,cashierName,type,name,price,ukuran){	
 	$("#template-tr").append("<tr>"+
 	"<td style='display:none;'>"+id+"</td>"+
 	"<td style='display:none;'>"+kapsterID+"</td>"+
@@ -334,6 +356,7 @@ function addRow(id,kapsterID,kapsterName,cashierID,cashierName,type,name,price){
 	 "<td>"+kapsterName+"</td>"+
 	 "<td>"+type+"</td>"+
 	 "<td>"+name+"</td>"+
+	 "<td>"+ukuran+"</td>"+
 	 "<td>Rp "+konversRupiah(price)+"</td>"+
 	 "<td align='center'><a href='#' class='delete-kapster-row' onclick='deleteRow(event,this)' ><button>X</button></a></td>"+
 	"</tr>"
@@ -469,5 +492,6 @@ function submitSell(e){
 
 }
 </script>
+
 
 </html>
