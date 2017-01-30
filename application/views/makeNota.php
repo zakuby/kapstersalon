@@ -105,7 +105,7 @@ foreach(array_slice($kapster_explode, 1) as $k)
 $tb1 .= '<br>Customer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: '.$nama_customer;
 $tb1 .= '<br>Payment Type&nbsp;: '.$payment_method;
 $tb1 .= '<br>Tanggal Transaksi&nbsp;: '.date("d F Y");
-$tb1 .= '<br>
+$tb1 .= '<br><br>
 			<table border="0">
                 <tr>
                   <th style="border-top:1pt solid black;">Nama Product</th>
@@ -166,14 +166,14 @@ if($persen_pajak!="kosong"){
 	$tb1 .=  '<td colspan="2">Tunai</td>';
 	$tb1 .=  '<td>Rp ' . number_format( $tunai, 0 , '' , '.' ) .'</td>';
 	$tb1 .=  '</tr>';
-	$tb1 .=  '<tr >';
+	$tb1 .=  '<tr class="border_bottom">';
 	$tb1 .=  '<td colspan="2">Kembalian</td>';
 	$tb1 .=  '<td>Rp ' . number_format( ($tunai-$total), 0 , '' , '.' ) .'</td>';
 	$tb1 .=  '</tr>';
 }
 	
 $tb1 .= '</table>';
-$tb1 .= '<p style="text-align: center;">Terimakasih.</p>';
+$tb1 .= '<br><p style="text-align: center;">Terimakasih.</p>';
 $pdf->writeHTML($tb1, true, false, false, false, '');
 
 // -----------------------------------------------------------------------------
