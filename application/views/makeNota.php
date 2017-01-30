@@ -173,7 +173,7 @@ if($persen_pajak!="kosong"){
 }
 	
 $tb1 .= '</table>';
-$tb1 .= '<br><p style="text-align: center;">Terimakasih.</p>';
+$tb1 .= '<p style="text-align: center;">Terimakasih.</p>';
 $pdf->writeHTML($tb1, true, false, false, false, '');
 
 // -----------------------------------------------------------------------------
