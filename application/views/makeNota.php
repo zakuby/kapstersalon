@@ -105,7 +105,7 @@ foreach(array_slice($kapster_explode, 1) as $k)
 $tb1 .= '<br>Customer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: '.$nama_customer;
 $tb1 .= '<br>Payment Type&nbsp;: '.$payment_method;
 $tb1 .= '<br>Tanggal Transaksi&nbsp;: '.date("d F Y");
-$tb1 .= '<br><br>
+$tb1 .= '<br>
 			<table border="0">
                 <tr>
                   <th style="border-top:1pt solid black;">Nama Product</th>
