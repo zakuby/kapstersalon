@@ -79,11 +79,11 @@ $tb1 = '<style>
 		border-top:1pt solid black;
 	}
 	table { 
-		border-spacing: 10px;
+		border-spacing: 1px;
 		border-collapse: separate;
 	}
 	td { 
-		padding: 10px;
+		padding: 1px;
 	}
 </style>';
 $kapster_explode = explode(",",$kapster);
