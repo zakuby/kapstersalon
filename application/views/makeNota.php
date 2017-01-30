@@ -31,6 +31,11 @@ class MYPDF extends TCPDF {
      $html = '<p style="text-align: center;">MICHIKA SALON<br>Jl. Apel Bunga Kembang No.47a</p><hr>';
      $this->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 1, $fill = 0, $reseth = true, $align = 'top', $autopadding = true);
   }
+  public function Footer() {
+        $this->SetY(-15);
+        $this->SetFont('helvetica', 'I', 8);
+        $this->Cell(0, 10,'Page ' . $this->getAliasNumPage() . ' of total ' .$this->getAliasNbPages(), 0, false, 'C', 0, '',0, false, 'T', 'M');
+  }
 }
 // create new PDF document
 $width = 227;  
