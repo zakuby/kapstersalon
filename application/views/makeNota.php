@@ -83,6 +83,7 @@ $kapster_explode = explode(",",$kapster);
 $tb1 .= 'Cashier&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: '.$nama_kasir;
 $tb1 .= '<br>Kapster&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: ';
 $i = 1;
+date_default_timezone_set("Asia/Bangkok");
 $kapster_count = count($kapster_explode);
 foreach(array_slice($kapster_explode, 1) as $k)
 {
@@ -96,6 +97,7 @@ foreach(array_slice($kapster_explode, 1) as $k)
 };
 $tb1 .= '<br>Customer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: '.$nama_customer;
 $tb1 .= '<br>Payment Type&nbsp;: '.$payment_method;
+$tb1 .= '<br>Tanggal Transaksi&nbsp;: '.date("d F Y");
 $tb1 .= '<br><br>
 			<table border="0">
                 <tr>
@@ -162,12 +164,7 @@ if($persen_pajak!="kosong"){
 	$tb1 .=  '<td>Rp ' . number_format( ($tunai-$total), 0 , '' , '.' ) .'</td>';
 	$tb1 .=  '</tr>';
 }
-date_default_timezone_set("Asia/Bangkok");
-$tb1 .=  '<tr class="border_top border_bottom">';
-$tb1 .=  '<td>Tgl.</td>';
-$tb1 .=  '<td>'.date("d-m-Y").'</td>';
-$tb1 .=  '<td>'.date("h:i:s").'</td>';
-$tb1 .=  '</tr>';		
+	
 $tb1 .= '</table>';
 $pdf->writeHTML($tb1, true, false, false, false, '');
 
