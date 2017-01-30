@@ -42,7 +42,6 @@ $width = 227;
 $height = 227; 
 $pageLayout = array($width, $height); //  or array($height, $width) 
 $pdf = new MYPDF('p', 'pt', $pageLayout, true, 'UTF-8', false);
-$pdf->SetPrintFooter(false);
 //$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
