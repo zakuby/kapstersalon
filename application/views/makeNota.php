@@ -33,8 +33,8 @@ class MYPDF extends TCPDF {
   }
   public function Footer() {
         $this->SetY(-15);
-        $this->SetFont('helvetica', 'I', 8);
-        $this->Cell(0, 10,'Page ' . $this->getAliasNumPage() . ' of total ' .$this->getAliasNbPages(), 0, false, 'C', 0, '',0, false, 'T', 'M');
+        $this->SetFont('helvetica', '', 8);
+        $this->Cell(0, 10,'Terimakasih.', 0, false, 'C', 0, '',0, false, 'T', 'M');
   }
 }
 // create new PDF document
@@ -175,9 +175,6 @@ if($persen_pajak!="kosong"){
 	$tb1 .=  '<td>Rp ' . number_format( ($tunai-$total), 0 , '' , '.' ) .'</td>';
 	$tb1 .=  '</tr>';
 }
-$tb1 .=  '<tr>';
-$tb1 .=  '<td align="center" colspan="3">Terimakasih</td>';
-$tb1 .=  '</tr>';	
 $tb1 .= '</table>';
 $pdf->writeHTML($tb1, true, false, false, false, '');
 
