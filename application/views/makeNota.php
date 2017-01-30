@@ -78,6 +78,13 @@ $tb1 = '<style>
 	tr.border_top td {
 		border-top:1pt solid black;
 	}
+	table { 
+		border-spacing: 10px;
+		border-collapse: separate;
+	}
+	td { 
+		padding: 10px;
+	}
 </style>';
 $kapster_explode = explode(",",$kapster);
 $tb1 .= 'Cashier&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: '.$nama_kasir;
