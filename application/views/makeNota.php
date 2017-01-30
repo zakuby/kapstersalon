@@ -109,9 +109,9 @@ $tb1 .= '<br>Tanggal Transaksi&nbsp;: '.date("d F Y");
 $tb1 .= '<br><br>
 			<table border="0">
                 <tr style="border-top:1pt solid black;">
-                  <th style="border-top:1pt solid black;">Nama Product</th>
-				  <th style="border-top:1pt solid black;">Category</th>
-				  <th style="border-top:1pt solid black;">Harga</th>
+                  <th>Nama Product</th>
+				  <th>Category</th>
+				  <th>Harga</th>
                 </tr>';
 $product_explode = explode(",",$product);
 $harga_explode = explode(",",$harga);
