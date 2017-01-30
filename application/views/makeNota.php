@@ -86,9 +86,6 @@ $tb1 = '<style>
 		border-spacing: 0px;
 		border-collapse: separate;
 	}
-	td { 
-		padding: 150px;
-	}
 </style>';
 $kapster_explode = explode(",",$kapster);
 $tb1 .= 'Cashier&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: '.$nama_kasir;
@@ -111,7 +108,7 @@ $tb1 .= '<br>Payment Type&nbsp;: '.$payment_method;
 $tb1 .= '<br>Tanggal Transaksi&nbsp;: '.date("d F Y");
 $tb1 .= '<br><br>
 			<table border="0">
-                <tr>
+                <tr style="border-top:1pt solid black;">
                   <th style="border-top:1pt solid black;">Nama Product</th>
 				  <th style="border-top:1pt solid black;">Category</th>
 				  <th style="border-top:1pt solid black;">Harga</th>
