@@ -124,7 +124,12 @@
 							echo '<input value="'.$produk->harga.'" type="text" class="form-control" name="harga" placeholder="'.$produk->harga.'" required>';
 						?>				
 				</div>
-		<input type="submit" class="btn btn-primary pull-right"value="Submit">
+			<div class="col-lg-4 pull-right">
+				<input type="submit" class="btn btn-primary pull-right"value="Submit">
+			</div>
+			<div class="col-lg-1 pull-right">
+				<a href="<?php echo base_url(); ?>Salon3/Admin/list_cashier" class="btn btn-primary" >Cancel</a>
+			</div>
 		</form>
 		
 	  </div>	

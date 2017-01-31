@@ -115,8 +115,13 @@
 							echo '<input value="'.$gaji->rate_gaji.'" type="text" class="form-control" name="rate_gaji" placeholder="'.$gaji->rate_gaji.'" required>';
 						?>				
 					
-				</div><br>
-		<input type="submit" class="btn btn-primary pull-right"value="Submit">
+				</div>			
+			<div class="col-lg-4 pull-right">
+				<input type="submit" class="btn btn-primary pull-right"value="Submit">
+			</div>
+			<div class="col-lg-1 pull-right">
+				<a href="<?php echo base_url(); ?>Salon3/Admin/list_cashier" class="btn btn-primary" >Cancel</a>
+			</div>
 		</form>
 		
 	  </div>	
