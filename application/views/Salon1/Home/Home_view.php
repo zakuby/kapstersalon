@@ -11,7 +11,7 @@
 <style>
 	.loginbox{
 		margin: 150px auto;
-		width: 550px;
+		max-width: 550px;
 		position: relative;
 		border-radius: 15px;
 		background: #ffffff;

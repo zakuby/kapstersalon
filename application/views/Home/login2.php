@@ -11,14 +11,14 @@
 <style>
 	.loginbox{
 		margin: 0px auto;
-		width: 550px;
+		max-width: 550px;
 		position: relative;
 		border-radius: 15px;
 		background: #ffffff;
 	}
 	.headbox{
 		margin: 30px auto;
-		width: 550px;
+		max-width: 550px;
 		color: white;
 	}
 	body{

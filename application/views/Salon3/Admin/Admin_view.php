@@ -17,7 +17,7 @@
 }
 	.centerbox{
 		margin-left: 130px;
-		width: 550px;
+		max-width: 550px;
 	}
 	.nota{
 		margin-left: 200px;
@@ -26,7 +26,7 @@
 	.loginbox{
 		margin: 90px;
 		margin-left: 100px;
-		width: 1050px;
+		max-width: 1050px;
 	}
 	.bg-black {
 	  background-color: #8e8d8d;
