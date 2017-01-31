@@ -184,8 +184,8 @@
 					echo "Biasa";
 				}
                 echo '<td align="center">';
-				echo "<a href='".site_url('Salon1/Admin/editProduk/'.$produk->id_produk)."')'><button>Edit</button></a> ";
-				echo "<a onClick=\"javascript: return confirm('Are you sure to delete ?');\" href='".site_url('Salon1/Admin/hapusProduk/'.$produk->id_produk)."')'><button>X</button></a>";
+				echo "<a href='".site_url('Salon3/Admin/editProduk/'.$produk->id_produk)."')'><button>Edit</button></a> ";
+				echo "<a onClick=\"javascript: return confirm('Are you sure to delete ?');\" href='".site_url('Salon3/Admin/hapusProduk/'.$produk->id_produk)."')'><button>X</button></a>";
             }
             ?>
 			                </tfoot>
