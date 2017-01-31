@@ -92,7 +92,7 @@ $tb1 = '<style>
 	.loginbox{
 		margin: 10px;
 		margin-left: 130px;
-		width: 950px;
+		max-width: 950px;
 	}
 table {
     border:1px solid #CCC;

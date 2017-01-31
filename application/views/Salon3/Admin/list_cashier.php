@@ -27,7 +27,7 @@
 	.loginbox{
 		margin: 10px;
 		margin-left: 130px;
-		width: 950px;
+		max-width: 950px;
 	}
 </style>
  
