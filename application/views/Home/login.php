@@ -69,7 +69,7 @@
               <!-- /.box-body -->
               <div class="box-footer">
                 <a href="<?php echo base_url(); ?>Home" class="btn btn-default">Cancel</a>
-                <input type="submit" value="Login" name="login" class="btn btn-info pull-right"></p>
+                <input type="submit" value="Login" name="login" class="btn btn-primary pull-right"></p>
               </div>
               <!-- /.box-footer -->
             </form>

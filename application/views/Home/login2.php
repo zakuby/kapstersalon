@@ -5,8 +5,8 @@
 <head>
 <title>Login</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="<?php echo base_url()."assets/bootstrap2/css/bootstrap.css"; ?>" type="text/css">
 <link rel="stylesheet" href="<?php echo base_url()."assets/bootstrap/dist/css/AdminLTE.min.css"; ?>" type="text/css">
+<link rel="stylesheet" href="<?php echo base_url()."assets/bootstrap2/css/bootstrap.css"; ?>" type="text/css">
 </head>
 <style>
 	.loginbox{
@@ -25,13 +25,23 @@
 		background-color: rgb(209,209,209);
 	}
 	.navbar-default {
-    background-color: #e95420;
-    border-color: #e95420;
-	    background-image: linear-gradient(#e95420, #e95420 60%, #e95420);
-}
+		background-color: #e95420;
+		border-color: #e95420;
+			background-image: linear-gradient(#e95420, #e95420 60%, #e95420);
+	}
 	.navbar-default .navbar-collapse, .navbar-default .navbar-form {
-    border-color: #e95420;
-}
+		border-color: #e95420;
+	}
+	.btn-primary {
+		background-color: #ffffff;
+		border-color: black;
+		background-image: linear-gradient(#e95420, #e95420 60%, #e95420);
+	}
+	.btn-primary:hover,.btn-primary:active,.btn-primary.hover{
+		background-color: #ffffff;
+		border-color: black;
+		background-image: linear-gradient(#e95420, #e95420 60%, #e95420);
+	}
 </style>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -77,7 +87,7 @@
               <!-- /.box-body -->
               <div class="box-footer">
                 <a href="<?php echo base_url(); ?>Home" class="btn btn-default">Cancel</a>
-                <input type="submit" value="Login" name="login" class="btn btn-info pull-right"></p>
+                <input type="submit" value="Login" name="login" class="btn btn-primary pull-right"></p>
               </div>
               <!-- /.box-footer -->
             </form>

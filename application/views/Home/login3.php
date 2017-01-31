@@ -25,13 +25,23 @@
 		background-color: rgb(209,209,209);
 	}
 	.navbar-default {
-    background-color:#2c3e50;
-    border-color: #2c3e50;
-	    background-image: linear-gradient(#2c3e50, #2c3e50 60%, #2c3e50);
-}
-	.navbar-default .navbar-collapse, .navbar-default .navbar-form {
-    border-color: #2c3e50;
-}
+		background-color:#2c3e50;
+		border-color: #2c3e50;
+			background-image: linear-gradient(#2c3e50, #2c3e50 60%, #2c3e50);
+	}
+		.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+		border-color: #2c3e50;
+	}
+	.btn-primary {
+		background-color: #ffffff;
+		border-color: black;
+		background-image: linear-gradient(#2c3e50, #2c3e50 60%, #2c3e50);
+	}
+	.btn-primary:hover,.btn-primary:active,.btn-primary.hover{
+		background-color: #ffffff;
+		border-color: black;
+		background-image: linear-gradient(#2c3e50, #2c3e50 60%, #2c3e50);
+	}	
 </style>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -77,7 +87,7 @@
               <!-- /.box-body -->
               <div class="box-footer">
                 <a href="<?php echo base_url(); ?>Home" class="btn btn-default">Cancel</a>
-                <input type="submit" value="Login" name="login" class="btn btn-info pull-right"></p>
+                <input type="submit" value="Login" name="login" class="btn btn-primary pull-right"></p>
               </div>
               <!-- /.box-footer -->
             </form>

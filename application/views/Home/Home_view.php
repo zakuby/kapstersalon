@@ -13,7 +13,6 @@
 		margin: 100px auto;
 		max-width: 550px;
 		position: relative;
-		background: #ffffff;
 	}
 	body{
 		background-color: #f6f3f3;
