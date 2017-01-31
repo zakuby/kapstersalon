@@ -120,10 +120,34 @@
 				</div><br>
 				<div class="form-group">
 				<label for="exampleInputPassword1" >Harga </label><br>
+				<label for="exampleInputPassword1" >Category SS </label>
 					    <?php
-							echo '<input value="'.$produk->harga.'" type="text" class="form-control" name="harga" placeholder="'.$produk->harga.'" required>';
+							echo '<input value="'.$produk->harga_SS.'" type="number" class="form-control" name="harga_SS" placeholder="'.$produk->harga_SS.'" required>';
 						?>				
 				</div>
+				<div class="form-group">
+				<label for="exampleInputPassword1" >Category S </label>
+					    <?php
+							echo '<input value="'.$produk->harga_S.'" type="number" class="form-control" name="harga_S" placeholder="'.$produk->harga_S.'" required>';
+						?>				
+				</div>
+				<div class="form-group">
+				<label for="exampleInputPassword1" >Category M </label>
+					    <?php
+							echo '<input value="'.$produk->harga_M.'" type="number" class="form-control" name="harga_M" placeholder="'.$produk->harga_M.'" required>';
+						?>				
+				</div>
+				<div class="form-group">
+				<label for="exampleInputPassword1" >Category L </label>
+					    <?php
+							echo '<input value="'.$produk->harga_L.'" type="number" class="form-control" name="harga_L" placeholder="'.$produk->harga_L.'" required>';
+						?>				
+				</div>
+				<?php
+					if($produk->rate!=NULL){
+						echo '				<div class="form-group">
+				<label for="exampleInputPassword1" >Rate (%) </label><input value="'.$produk->rate.'" type="number" class="form-control" name="rate" placeholder="'.$produk->rate.'" required></div>';
+					}?>
 			<div class="col-lg-4 pull-right">
 				<input type="submit" class="btn btn-primary pull-right"value="Submit">
 			</div>
