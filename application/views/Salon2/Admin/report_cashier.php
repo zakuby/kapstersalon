@@ -18,7 +18,7 @@
 }
 	.centerbox{
 		margin-left: 130px;
-		width: 450px;
+		max-width: 450px;
 	}
 	.loginbox{
 		margin: 10px;
