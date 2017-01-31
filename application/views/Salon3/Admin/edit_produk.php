@@ -128,7 +128,7 @@
 				<input type="submit" class="btn btn-primary pull-right"value="Submit">
 			</div>
 			<div class="col-lg-1 pull-right">
-				<a href="<?php echo base_url(); ?>Salon3/Admin/list_produk" class="btn btn-primary" >Cancel</a>
+				<a href="<?php echo base_url(); ?>Salon3/Admin/list_produks" class="btn btn-primary" >Cancel</a>
 			</div>
 		</form>
 		
