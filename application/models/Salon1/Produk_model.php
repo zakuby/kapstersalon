@@ -60,6 +60,22 @@ class Produk_model extends CI_Model {
 			return 0;
 		}		
     }
+	public function loadDiscount($nama,$first_date,$second_date) {
+		$this->db->where('id_cashier',$nama);
+		$first_date = DateTime::createFromFormat('d/m/Y', $first_date);
+		$first_date = $first_date->format('Y-m-d');
+		$second_date = DateTime::createFromFormat('d/m/Y', $second_date);
+		$second_date = $second_date->format('Y-m-d');		
+		$this->db->where('tanggal >=', $first_date);
+		$this->db->where('tanggal <=', $second_date);
+		$query = $this->db->get('discount_cashier');
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		} else {
+			return 0;
+		}		
+    }
+	
 	public function loadnamaData($jenis,$nama) {
 		$this->db->where('jenis_produk', $jenis);
 		$this->db->like('nama_produk', $nama);
