@@ -312,9 +312,9 @@ function saveNota(e){
 		document.getElementById("nama_cashier").value = $("#nama-cashier option:selected").html();
 		document.getElementById("nama_customer").value = $("#nama-customer").val();
 		document.getElementById("payment_method").value = document.querySelector('input[name="optionsRadios"]:checked').value;
-		if($("#total_update").html()!="")(
+		if($("#total_update").html()!=""){
 			document.getElementById("totalHarga").value = $("#total_update").html();
-		)else{
+		}else{
 			document.getElementById("totalHarga").value = $("#total_invis").html();
 		}
 		document.getElementById("totalTunai").value = Number($("#nominal_uang").val());
