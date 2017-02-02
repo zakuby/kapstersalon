@@ -67,7 +67,7 @@
   </div>
 </nav>
 <body id="page-top" class="index">
-		<div class="col-lg-10"><h3>Start Selling</h3><h5 class="text-right"><?php echo "Time Server " . date("d F Y") . "<br>";?></h5>
+		<h3>Start Selling</h3><h5 class="text-right"><?php echo "Time Server " . date("d F Y") . "<br>";?></h5>
 		<div class="box-body centerbox">
 			<div id="nama-cashier"><label for="sel1">Nama Cashier</label><br>
             <div class="parent-kepster row">
@@ -204,7 +204,7 @@
 				</div>
 				
 				<div id="tujuan">
-				<label for="exampleInputPassword1" >Nominal Uang </label> <input type="number" class="form-control" name="nominal_uang" id="nominal_uang" onchange="konfirmasiNominal(event)" required><div id="discount-harga"><label for="exampleInputPassword1" >Discount </label><select class="form-control" name="discount" required><option value="0"></option><option value="5000">Rp 5.000</option><option value="10000">Rp 10.000</option><option value="15000">Rp 15.000</option><option value="20000">Rp 20.000</option><option value="25000">Rp 25.000</option><option value="30000">Rp 30.000</option><option value="35000">Rp 35.000</option><option value="40000">Rp 40.000</option><option value="45000">Rp 45.000</option><option value="50000">Rp 50.000</option></select></div><br><br>
+				<label for="exampleInputPassword1" >Nominal Uang </label> <input type="number" class="form-control" name="nominal_uang" id="nominal_uang" onchange="konfirmasiNominal(event)" required><div id="discount-harga"><label for="exampleInputPassword1" >Discount </label><select class="form-control" name="discount" onchange="updateTotal(event)" required><option value="0"></option><option value="5000">Rp 5.000</option><option value="10000">Rp 10.000</option><option value="15000">Rp 15.000</option><option value="20000">Rp 20.000</option><option value="25000">Rp 25.000</option><option value="30000">Rp 30.000</option><option value="35000">Rp 35.000</option><option value="40000">Rp 40.000</option><option value="45000">Rp 45.000</option><option value="50000">Rp 50.000</option></select></div><br><br>
 				</div>	</div>
               <table style="display:none;" id="example2" class="table table-bordered table-hover">
                 <thead>
@@ -224,6 +224,7 @@
 					<td class="bg-black"style="border-right-width: 0px;" colspan="5"><b>Total</b></td>
 					<td class="bg-black" style="border-left-width: 0px;font-weight:bold;" colspan="2" id="total_table"></td>
 					<td style="display:none;" id="total_invis"></td>
+					<td style="display:none;" id="total_update"></td>
 				</tr>
               </table>
 			 <div class="col-lg-1 pull-right">
@@ -255,14 +256,49 @@ function konfirmasiNominal(e){
 	e.preventDefault()
 	var nominal = Number($("#nominal_uang").val());
 	var total = Number($("#total_invis").html());
-	if(nominal < total && total!=null){
-		alert("Nominal Uang harus lebih besar dari Total Harga")
-		document.getElementById("nominal_uang").style.borderColor = "red";
-		return false;
+	var total2 = Number($("#total_update").html());
+	if(total2!=""){
+		if(nominal < total2 && total2!=null){
+			alert("Nominal Uang harus lebih besar dari Total Harga")
+			document.getElementById("nominal_uang").style.borderColor = "red";
+			return false;
+		}else{
+			document.getElementById("nominal_uang").style.borderColor = "#cccccc";
+			return true;
+		}		
 	}else{
-		document.getElementById("nominal_uang").style.borderColor = "#cccccc";
-		return true;
+		if(nominal < total && total!=null){
+			alert("Nominal Uang harus lebih besar dari Total Harga")
+			document.getElementById("nominal_uang").style.borderColor = "red";
+			return false;
+		}else{
+			document.getElementById("nominal_uang").style.borderColor = "#cccccc";
+			return true;
+		}			
 	}
+}
+function updateTotal(e){
+	e.preventDefault()
+	var pajak = Number($("#pajak-harga option:selected").val());
+	var discount = Number($("#discount-harga option:selected").val());
+	var harga = Number($("#total_invis").html());
+	if($("#pajak-harga option:selected").val()!=null && discount!=""){
+		pajak = harga*(pajak/100);
+		harga = harga - discount;
+		harga = harga + pajak; 
+		document.getElementById('total_update').innerHTML = harga;
+		document.getElementById('total_table').innerHTML = "Rp "+konversRupiah(harga);
+	}else if(discount!=""){
+		harga = harga - discount;
+		document.getElementById('total_update').innerHTML = harga;
+		document.getElementById('total_table').innerHTML = "Rp "+konversRupiah(harga);
+	}else if($("#pajak-harga option:selected").val()!=null){
+		pajak = harga*(pajak/100);
+		harga = harga + pajak;
+		document.getElementById('total_update').innerHTML = harga;		
+		document.getElementById('total_table').innerHTML = "Rp "+konversRupiah(harga);
+	}
+	
 }
 function saveNota(e){
 	e.preventDefault()
@@ -276,7 +312,11 @@ function saveNota(e){
 		document.getElementById("nama_cashier").value = $("#nama-cashier option:selected").html();
 		document.getElementById("nama_customer").value = $("#nama-customer").val();
 		document.getElementById("payment_method").value = document.querySelector('input[name="optionsRadios"]:checked').value;
-		document.getElementById("totalHarga").value = $("#total_invis").html();
+		if($("#total_update").html()!=""){
+			document.getElementById("totalHarga").value = $("#total_update").html();
+		}else{
+			document.getElementById("totalHarga").value = $("#total_invis").html();
+		}
 		document.getElementById("totalTunai").value = Number($("#nominal_uang").val());
 		if($("#pajak-harga option:selected").val()!=null){
 			document.getElementById("persenPajak").value = $("#pajak-harga option:selected").val();
@@ -338,11 +378,12 @@ function pilih_produk(d) {
 };
 function update(){
 	if(document.getElementById('optionsRadios3').checked) {
-       document.getElementById("tujuan").innerHTML = '<label for="exampleInputPassword1" >Nominal Uang </label> <input type="number" class="form-control" name="nominal_uang" id="nominal_uang" onchange="konfirmasiNominal(event)" required><div id="pajak-harga"><label for="exampleInputPassword1" >Bank </label><select class="form-control" name="jenis_bank" required><option value=""></option><option value="0">BCA</option><option value="1">non-BCA</option></select></div><div id="discount-harga"><label for="exampleInputPassword1" >Discount </label><select class="form-control" name="discount" required><option value="0"></option><option value="5000">Rp 5.000</option><option value="10000">Rp 10.000</option><option value="15000">Rp 15.000</option><option value="20000">Rp 20.000</option><option value="25000">Rp 25.000</option><option value="30000">Rp 30.000</option><option value="35000">Rp 35.000</option><option value="40000">Rp 40.000</option><option value="45000">Rp 45.000</option><option value="50000">Rp 50.000</option></select></div><br><br>';
+       document.getElementById("tujuan").innerHTML = '<label for="exampleInputPassword1" >Nominal Uang </label> <input type="number" class="form-control" name="nominal_uang" id="nominal_uang" onchange="konfirmasiNominal(event)" required><div id="pajak-harga"><label for="exampleInputPassword1" >Bank </label><select class="form-control" name="jenis_bank"  onchange="updateTotal(event)" required><option value=""></option><option value="0">BCA</option><option value="1">non-BCA</option></select></div><div id="discount-harga"><label for="exampleInputPassword1" >Discount </label><select class="form-control" name="discount" onchange="updateTotal(event)" required><option value="0"></option><option value="5000">Rp 5.000</option><option value="10000">Rp 10.000</option><option value="15000">Rp 15.000</option><option value="20000">Rp 20.000</option><option value="25000">Rp 25.000</option><option value="30000">Rp 30.000</option><option value="35000">Rp 35.000</option><option value="40000">Rp 40.000</option><option value="45000">Rp 45.000</option><option value="50000">Rp 50.000</option></select></div><br><br>';
 	}else{
-       document.getElementById("tujuan").innerHTML = '<label for="exampleInputPassword1" >Nominal Uang </label> <input type="number" class="form-control" name="nominal_uang" id="nominal_uang" onchange="konfirmasiNominal(event)" required><div id="discount-harga"><label for="exampleInputPassword1" >Discount </label><select class="form-control" name="discount" required><option value="0"></option><option value="5000">Rp 5.000</option><option value="10000">Rp 10.000</option><option value="15000">Rp 15.000</option><option value="20000">Rp 20.000</option><option value="25000">Rp 25.000</option><option value="30000">Rp 30.000</option><option value="35000">Rp 35.000</option><option value="40000">Rp 40.000</option><option value="45000">Rp 45.000</option><option value="50000">Rp 50.000</option></select></div><br><br>';		
+       document.getElementById("tujuan").innerHTML = '<label for="exampleInputPassword1" >Nominal Uang </label> <input type="number" class="form-control" name="nominal_uang" id="nominal_uang" onchange="konfirmasiNominal(event)" required><div id="discount-harga"><label for="exampleInputPassword1" >Discount </label><select class="form-control" name="discount" onchange="updateTotal(event)" required><option value="0"></option><option value="5000">Rp 5.000</option><option value="10000">Rp 10.000</option><option value="15000">Rp 15.000</option><option value="20000">Rp 20.000</option><option value="25000">Rp 25.000</option><option value="30000">Rp 30.000</option><option value="35000">Rp 35.000</option><option value="40000">Rp 40.000</option><option value="45000">Rp 45.000</option><option value="50000">Rp 50.000</option></select></div><br><br>';		
 	}
 }	
+
 function submitSelection(e){
 	e.preventDefault()
 	var cashierName = $("#nama-cashier option:selected").html()
@@ -406,14 +447,14 @@ function addRow(id,kapsterID,kapsterName,cashierID,cashierName,type,name,price,u
 	 "<td>"+ukuran+"</td>"+
 	 "<td>Rp "+konversRupiah(price)+"</td>"+
 	 "<td align='center'><a href='#' class='delete-kapster-row' onclick='deleteRow(event,this)' ><button>X</button></a></td>"+
-	"</tr>"
+	"</tr>")
 	
-	)
 	total_harga_tabel = total_harga_tabel + Number(price);
 	total_harga_invis = total_harga_invis + Number(price);
 	document.getElementById('total_table').innerHTML = "Rp "+konversRupiah(total_harga_tabel);
 	document.getElementById('total_invis').innerHTML = total_harga_invis;
 }
+
 function addOptionKapster(e){	
 	
 	$("#nama-kapster").append('<div class="parent-kepster row"><br><div class="col-md-10 col-sm-9 col-xs-8"><select class="form-control kapsterName" id="kapsterName" >'+
@@ -499,6 +540,8 @@ function submitSell(e){
 	var cashierArrID = []
 	var hargaArr = []
 	var kapsterArrProdID= []
+	var namaCashier = $("#nama-cashier option:selected").val();
+	var discountTotal = $("#discount-harga option:selected").val();
 
 	$("#template-tr tr").each(function(index,tr){
 
@@ -520,6 +563,8 @@ function submitSell(e){
 			array_kapster: kapsterArrID,
 			array_product: kapsterArrProdID,
 			array_cashier: cashierArrID,
+			cashier_name: namaCashier,
+			total_discount: discountTotal,
 			array_harga: hargaArr
 		},
 		function(data, status){

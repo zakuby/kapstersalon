@@ -210,9 +210,16 @@ $(function() {
 			echo 'Rp. ' . number_format( $total2, 0 , '' , '.' ) ; 
 			print '</td><td colspan="2">'.$transaksi->rate_cashier .'%</td></tr>';
 			print '<tr class="bg-black">';
-			print '<td colspan="3">Gaji Cashier</td><td colspan="2">';
+			print '<td colspan="3">Gaji Cashier</td><td colspan="3">';
 			echo 'Rp. ' . number_format( $total, 0 , '' , '.' ) ; 
-			print '</td><td></td></tr>';
+			print '</td></tr>';
+			foreach ($d as $discount){
+				$total_discount = $total_discount + $discount->discount;
+			}
+			print '<tr class="bg-black">';
+			print '<td colspan="3">Total Discount</td><td colspan="3">';
+			echo 'Rp. ' . number_format( $total_discount, 0 , '' , '.' ) ; 
+			print '</td></tr>';
             ?></tbody></table><a href="<?php echo base_url(); ?>Salon2/Admin/createPDFCashier" class="btn btn-primary pull-right" id="cmd"  target="_blank">Save PDF</a>
 		</div>
       </div>

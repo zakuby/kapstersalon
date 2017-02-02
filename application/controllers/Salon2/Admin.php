@@ -152,8 +152,10 @@ class Admin extends CI_Controller {
 		$this->load->model('Salon2/kapster_model');
 		if($transaksi = $this->produk_model->loadTransaksiCashier($_SESSION["nama"],$_SESSION["first_date"],$_SESSION["second_date"])){
 			$this->load->vars('t', $transaksi);
+			$discount = $this->produk_model->loadDiscount($_SESSION["nama"],$_SESSION["first_date"],$_SESSION["second_date"]);
 			$cashier = $this->kapster_model->loadDataCashier();
 			$this->load->vars('c', $cashier);
+			$this->load->vars('d', $discount);
 			$this->load->view('Salon2/Admin/report_cashier.php');
 		}else{
 			?><script>alert("Transaksi tidak ditemukan");</script><?php
@@ -234,6 +236,7 @@ class Admin extends CI_Controller {
 	 $this->load->database();
 	 $this->load->model('Salon2/produk_model');
 	 $this->produk_model->create_transaksi();
+	 $this->produk_model->create_diskon();
 	 redirect('Salon2/Admin/index','refresh');
 	}
 	public function updateProduk($id){
