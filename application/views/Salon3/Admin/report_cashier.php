@@ -197,7 +197,7 @@ $(function() {
 					print '<td>Rp. '. number_format( ($transaksi->harga * ($transaksi->rate_produk/100)), 0 , '' , '.' ) .'</td>';
 					$total = $total + ($transaksi->harga * ($transaksi->rate_produk/100));
 				}else{
-					print $transaksi->rate_kapster .'%</td>';
+					print $transaksi->rate_cashier .'%</td>';
 					print '<td>Rp. '. number_format( ($transaksi->harga * ($transaksi->rate_cashier/100)), 0 , '' , '.' ) .'</td>';
 					$total = $total + ($transaksi->harga * ($transaksi->rate_cashier/100));
 				}				
