@@ -540,7 +540,7 @@ function submitSell(e){
 	var cashierArrID = []
 	var hargaArr = []
 	var kapsterArrProdID= []
-	var namaCashier = $("#nama-cashier option:selected").html();
+	var namaCashier = $("#nama-cashier option:selected").val();
 	var discountTotal = $("#discount-harga option:selected").val();
 
 	$("#template-tr tr").each(function(index,tr){
