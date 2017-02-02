@@ -417,7 +417,7 @@ function addRow(id,kapsterID,kapsterName,cashierID,cashierName,type,name,price,u
 	 "<td>"+ukuran+"</td>"+
 	 "<td>Rp "+konversRupiah(price)+"</td>"+
 	 "<td align='center'><a href='#' class='delete-kapster-row' onclick='deleteRow(event,this)' ><button>X</button></a></td>"+
-	"</tr>"
+	"</tr>")
 	
 	total_harga_tabel = total_harga_tabel + Number(price);
 	total_harga_invis = total_harga_invis + Number(price);
