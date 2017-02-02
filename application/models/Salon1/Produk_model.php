@@ -42,7 +42,7 @@ class Produk_model extends CI_Model {
 		}
 
 	}
-	public function create_discount(){
+	public function create_diskon(){
 		$data = array('id_cashier'=>$this->input->post("cashier_name"),
 					   'discount'=>$this->input->post("total_discount"),
 					   'tanggal'=> date("Y-m-d")
