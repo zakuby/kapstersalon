@@ -266,7 +266,7 @@ function konfirmasiNominal(e){
 }
 function pajakTotal(e){
 	e.preventDefault()
-	var pajak = $("#pajak-harga option:selected").val();
+	var pajak = Number($("#pajak-harga option:selected").val());
 	if($("#pajak-harga option:selected").val()!=null){
 		var harga = $("#total_table").html();
 		pajak = harga*(pajak/100);
@@ -419,15 +419,7 @@ function addRow(id,kapsterID,kapsterName,cashierID,cashierName,type,name,price,u
 	 "<td align='center'><a href='#' class='delete-kapster-row' onclick='deleteRow(event,this)' ><button>X</button></a></td>"+
 	"</tr>"
 	
-	)
-	if($("#pajak-harga option:selected").val()!=null){
-		var pajak = $("#pajak-harga option:selected").val();
-		total_harga_tabel = total_harga_tabel + Number(price);
-		pajak = total_harga_tabel*(pajak/100);
-		total_harga_tabel = total_harga_tabel + pajak; 
-	}else{
-		total_harga_tabel = total_harga_tabel + Number(price);
-	}
+	total_harga_tabel = total_harga_tabel + Number(price);
 	total_harga_invis = total_harga_invis + Number(price);
 	document.getElementById('total_table').innerHTML = "Rp "+konversRupiah(total_harga_tabel);
 	document.getElementById('total_invis').innerHTML = total_harga_invis;
