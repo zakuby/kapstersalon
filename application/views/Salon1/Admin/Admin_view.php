@@ -312,7 +312,11 @@ function saveNota(e){
 		document.getElementById("nama_cashier").value = $("#nama-cashier option:selected").html();
 		document.getElementById("nama_customer").value = $("#nama-customer").val();
 		document.getElementById("payment_method").value = document.querySelector('input[name="optionsRadios"]:checked').value;
-		document.getElementById("totalHarga").value = $("#total_invis").html();
+		if(
+			document.getElementById("totalHarga").value = $("#total_update").html();
+		)else{
+			document.getElementById("totalHarga").value = $("#total_invis").html();
+		}
 		document.getElementById("totalTunai").value = Number($("#nominal_uang").val());
 		if($("#pajak-harga option:selected").val()!=null){
 			document.getElementById("persenPajak").value = $("#pajak-harga option:selected").val();
