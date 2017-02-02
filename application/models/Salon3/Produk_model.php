@@ -7,15 +7,25 @@ class Produk_model extends CI_Model {
 	public function create(){
 		$data = array('jenis_produk'=>$this->input->post('jenis_perawatan'),
 						 'nama_produk'=>$this->input->post('nama_perawatan'),
-						 'harga'=>$this->input->post('harga')
+						 'harga_SS'=>$this->input->post('harga_SS'),
+						 'harga_S'=>$this->input->post('harga_S'),
+						 'harga_M'=>$this->input->post('harga_M'),
+						 'harga_L'=>$this->input->post('harga_L')
 					);
 		$this->db->insert('produk',$data);
+		if($this->db->affected_rows() > 0) {
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 	public function special_create(){
 		$data = array('jenis_produk'=>$this->input->post('jenis_perawatan'),
 						 'nama_produk'=>$this->input->post('nama_perawatan'),
-						 'harga'=>$this->input->post('harga'),
-						 'rate'=>$this->input->post('rate')
+						 'harga_SS'=>$this->input->post('harga_SS'),
+						 'harga_S'=>$this->input->post('harga_S'),
+						 'harga_M'=>$this->input->post('harga_M'),
+						 'harga_L'=>$this->input->post('harga_L')
 					);
 		$this->db->insert('produk',$data);
 	}
@@ -25,6 +35,7 @@ class Produk_model extends CI_Model {
 			$data = array('id_kapster'=>$kapster,
 						   'id_produk'=>$this->input->post("array_product")[$index],
 						   'id_cashier'=>$this->input->post("array_cashier")[$index],
+						   'harga'=>$this->input->post("array_harga")[$index],
 						   'tanggal'=> date("Y-m-d")
 					);
 			$this->db->insert('transaksi3',$data);	
