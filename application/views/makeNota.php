@@ -148,7 +148,7 @@ if($persen_pajak!="kosong"){
 	$tb1 .=  '<td colspan="2">Tunai</td>';
 	$tb1 .=  '<td>Rp ' . number_format( $tunai, 0 , '' , '.' ) .'</td>';
 	$tb1 .=  '</tr>';
-	$tb1 .=  '<tr>';
+	$tb1 .=  '<tr class="border_bottom">';
 	$tb1 .=  '<td colspan="2">Kembalian</td>';
 	$tb1 .=  '<td>Rp ' . number_format( ($tunai-$total), 0 , '' , '.' ) .'</td>';
 	$tb1 .=  '</tr>';
