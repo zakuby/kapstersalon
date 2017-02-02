@@ -180,6 +180,7 @@ $(function() {
             <?php
 			$total = 0;
 			$total2 = 0;
+			$total_discount = 0;
             foreach ($t as $transaksi) {
                 print "<tr>";
                 print "<td>";
