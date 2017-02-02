@@ -271,7 +271,7 @@ function pajakTotal(e){
 		var harga = Number($("#total_invis").html());
 		pajak = harga*(pajak/100);
 		harga = harga + pajak; 
-		document.getElementById('total_table').innerHTML = konversRupiah(harga);
+		document.getElementById('total_table').innerHTML = "Rp "+konversRupiah(harga);
 	}
 }
 function saveNota(e){
