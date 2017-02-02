@@ -204,7 +204,7 @@
 				</div>
 				
 				<div id="tujuan">
-				<label for="exampleInputPassword1" >Nominal Uang </label> <input type="number" class="form-control" name="nominal_uang" id="nominal_uang" onchange="konfirmasiNominal(event)" required><div id="discount-harga"><label for="exampleInputPassword1" >Discount </label><select class="form-control" name="discount" required><option value="0"></option><option value="5000">Rp 5.000</option><option value="10000">Rp 10.000</option><option value="15000">Rp 15.000</option><option value="20000">Rp 20.000</option><option value="25000">Rp 25.000</option><option value="30000">Rp 30.000</option><option value="35000">Rp 35.000</option><option value="40000">Rp 40.000</option><option value="45000">Rp 45.000</option><option value="50000">Rp 50.000</option></select></div><br><br>
+				<label for="exampleInputPassword1" >Nominal Uang </label> <input type="number" class="form-control" name="nominal_uang" id="nominal_uang" onchange="konfirmasiNominal(event)" required><div id="discount-harga"><label for="exampleInputPassword1" >Discount </label><select class="form-control" name="discount" onchange="updateTotal(event)" required><option value="0"></option><option value="5000">Rp 5.000</option><option value="10000">Rp 10.000</option><option value="15000">Rp 15.000</option><option value="20000">Rp 20.000</option><option value="25000">Rp 25.000</option><option value="30000">Rp 30.000</option><option value="35000">Rp 35.000</option><option value="40000">Rp 40.000</option><option value="45000">Rp 45.000</option><option value="50000">Rp 50.000</option></select></div><br><br>
 				</div>	</div>
               <table style="display:none;" id="example2" class="table table-bordered table-hover">
                 <thead>
@@ -224,6 +224,7 @@
 					<td class="bg-black"style="border-right-width: 0px;" colspan="5"><b>Total</b></td>
 					<td class="bg-black" style="border-left-width: 0px;font-weight:bold;" colspan="2" id="total_table"></td>
 					<td style="display:none;" id="total_invis"></td>
+					<td style="display:none;" id="total_update"></td>
 				</tr>
               </table>
 			 <div class="col-lg-1 pull-right">
@@ -255,13 +256,25 @@ function konfirmasiNominal(e){
 	e.preventDefault()
 	var nominal = Number($("#nominal_uang").val());
 	var total = Number($("#total_invis").html());
-	if(nominal < total && total!=null){
-		alert("Nominal Uang harus lebih besar dari Total Harga")
-		document.getElementById("nominal_uang").style.borderColor = "red";
-		return false;
+	var total2 = Number($("#total_update").html());
+	if(total2!=""){
+		if(nominal < total2 && total2!=null){
+			alert("Nominal Uang harus lebih besar dari Total Harga")
+			document.getElementById("nominal_uang").style.borderColor = "red";
+			return false;
+		}else{
+			document.getElementById("nominal_uang").style.borderColor = "#cccccc";
+			return true;
+		}		
 	}else{
-		document.getElementById("nominal_uang").style.borderColor = "#cccccc";
-		return true;
+		if(nominal < total && total!=null){
+			alert("Nominal Uang harus lebih besar dari Total Harga")
+			document.getElementById("nominal_uang").style.borderColor = "red";
+			return false;
+		}else{
+			document.getElementById("nominal_uang").style.borderColor = "#cccccc";
+			return true;
+		}			
 	}
 }
 function updateTotal(e){
@@ -273,13 +286,16 @@ function updateTotal(e){
 		pajak = harga*(pajak/100);
 		harga = harga - discount;
 		harga = harga + pajak; 
+		document.getElementById('total_update').innerHTML = harga;
 		document.getElementById('total_table').innerHTML = "Rp "+konversRupiah(harga);
 	}else if(discount!=""){
 		harga = harga - discount;
+		document.getElementById('total_update').innerHTML = harga;
 		document.getElementById('total_table').innerHTML = "Rp "+konversRupiah(harga);
 	}else if($("#pajak-harga option:selected").val()!=null){
 		pajak = harga*(pajak/100);
-		harga = harga + pajak; 
+		harga = harga + pajak;
+		document.getElementById('total_update').innerHTML = harga;		
 		document.getElementById('total_table').innerHTML = "Rp "+konversRupiah(harga);
 	}
 	
