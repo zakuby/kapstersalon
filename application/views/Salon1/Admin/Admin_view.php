@@ -272,12 +272,10 @@ function updateTotal(e){
 	if($("#pajak-harga option:selected").val()!=null){
 		pajak = harga*(pajak/100);
 		harga = harga + pajak; 
-		document.getElementById('total_invis').innerHTML = harga;
 		document.getElementById('total_table').innerHTML = "Rp "+konversRupiah(harga);
 	}
 	if(discount!=""){
 		harga = harga - discount;
-		document.getElementById('total_invis').innerHTML = harga;
 		document.getElementById('total_table').innerHTML = "Rp "+konversRupiah(harga);
 	}
 	
