@@ -42,6 +42,14 @@ class Produk_model extends CI_Model {
 		}
 
 	}
+	public function create_discount(){
+		$data = array('id_cashier'=>$this->input->post("cashier_name"),
+					   'discount'=>$this->input->post("total_discount")
+					   'tanggal'=> date("Y-m-d")
+				);
+		$this->db->insert('discount_cashier',$data);	
+
+	}	
 	
 	public function loadData($jenis) {
 		$this->db->where('jenis_produk', $jenis);

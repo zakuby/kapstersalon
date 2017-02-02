@@ -540,6 +540,8 @@ function submitSell(e){
 	var cashierArrID = []
 	var hargaArr = []
 	var kapsterArrProdID= []
+	var namaCashier = $("#nama-cashier option:selected").html();
+	var discountTotal = $("#discount-harga option:selected").val();
 
 	$("#template-tr tr").each(function(index,tr){
 
@@ -561,6 +563,8 @@ function submitSell(e){
 			array_kapster: kapsterArrID,
 			array_product: kapsterArrProdID,
 			array_cashier: cashierArrID,
+			cashier_name: namaCashier,
+			total_discount: discountTotal,
 			array_harga: hargaArr
 		},
 		function(data, status){

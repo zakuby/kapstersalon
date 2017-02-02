@@ -234,6 +234,7 @@ class Admin extends CI_Controller {
 	 $this->load->database();
 	 $this->load->model('Salon1/produk_model');
 	 $this->produk_model->create_transaksi();
+	 $this->produk_model->create_diskon();
 	 redirect('Salon1/Admin/index','refresh');
 	}
 	public function updateProduk($id){
