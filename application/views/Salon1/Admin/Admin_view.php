@@ -264,15 +264,23 @@ function konfirmasiNominal(e){
 		return true;
 	}
 }
-function pajakTotal(e){
+function updateTotal(e){
 	e.preventDefault()
 	var pajak = Number($("#pajak-harga option:selected").val());
+	var discount = Number($("#discount-harga option:selected").val());
+	var harga = Number($("#total_invis").html());
 	if($("#pajak-harga option:selected").val()!=null){
-		var harga = Number($("#total_invis").html());
 		pajak = harga*(pajak/100);
 		harga = harga + pajak; 
+		document.getElementById('total_invis').innerHTML = harga;
 		document.getElementById('total_table').innerHTML = "Rp "+konversRupiah(harga);
 	}
+	if(discount!=""){
+		harga = harga - discount;
+		document.getElementById('total_invis').innerHTML = harga;
+		document.getElementById('total_table').innerHTML = "Rp "+konversRupiah(harga);
+	}
+	
 }
 function saveNota(e){
 	e.preventDefault()
@@ -348,9 +356,9 @@ function pilih_produk(d) {
 };
 function update(){
 	if(document.getElementById('optionsRadios3').checked) {
-       document.getElementById("tujuan").innerHTML = '<label for="exampleInputPassword1" >Nominal Uang </label> <input type="number" class="form-control" name="nominal_uang" id="nominal_uang" onchange="konfirmasiNominal(event)" required><div id="pajak-harga"><label for="exampleInputPassword1" >Bank </label><select class="form-control" name="jenis_bank"  onchange="pajakTotal(event)" required><option value=""></option><option value="0">BCA</option><option value="1">non-BCA</option></select></div><div id="discount-harga"><label for="exampleInputPassword1" >Discount </label><select class="form-control" name="discount" required><option value="0"></option><option value="5000">Rp 5.000</option><option value="10000">Rp 10.000</option><option value="15000">Rp 15.000</option><option value="20000">Rp 20.000</option><option value="25000">Rp 25.000</option><option value="30000">Rp 30.000</option><option value="35000">Rp 35.000</option><option value="40000">Rp 40.000</option><option value="45000">Rp 45.000</option><option value="50000">Rp 50.000</option></select></div><br><br>';
+       document.getElementById("tujuan").innerHTML = '<label for="exampleInputPassword1" >Nominal Uang </label> <input type="number" class="form-control" name="nominal_uang" id="nominal_uang" onchange="konfirmasiNominal(event)" required><div id="pajak-harga"><label for="exampleInputPassword1" >Bank </label><select class="form-control" name="jenis_bank"  onchange="updateTotal(event)" required><option value=""></option><option value="0">BCA</option><option value="1">non-BCA</option></select></div><div id="discount-harga"><label for="exampleInputPassword1" >Discount </label><select class="form-control" name="discount" onchange="updateTotal(event)" required><option value="0"></option><option value="5000">Rp 5.000</option><option value="10000">Rp 10.000</option><option value="15000">Rp 15.000</option><option value="20000">Rp 20.000</option><option value="25000">Rp 25.000</option><option value="30000">Rp 30.000</option><option value="35000">Rp 35.000</option><option value="40000">Rp 40.000</option><option value="45000">Rp 45.000</option><option value="50000">Rp 50.000</option></select></div><br><br>';
 	}else{
-       document.getElementById("tujuan").innerHTML = '<label for="exampleInputPassword1" >Nominal Uang </label> <input type="number" class="form-control" name="nominal_uang" id="nominal_uang" onchange="konfirmasiNominal(event)" required><div id="discount-harga"><label for="exampleInputPassword1" >Discount </label><select class="form-control" name="discount" required><option value="0"></option><option value="5000">Rp 5.000</option><option value="10000">Rp 10.000</option><option value="15000">Rp 15.000</option><option value="20000">Rp 20.000</option><option value="25000">Rp 25.000</option><option value="30000">Rp 30.000</option><option value="35000">Rp 35.000</option><option value="40000">Rp 40.000</option><option value="45000">Rp 45.000</option><option value="50000">Rp 50.000</option></select></div><br><br>';		
+       document.getElementById("tujuan").innerHTML = '<label for="exampleInputPassword1" >Nominal Uang </label> <input type="number" class="form-control" name="nominal_uang" id="nominal_uang" onchange="konfirmasiNominal(event)" required><div id="discount-harga"><label for="exampleInputPassword1" >Discount </label><select class="form-control" name="discount" onchange="updateTotal(event)" required><option value="0"></option><option value="5000">Rp 5.000</option><option value="10000">Rp 10.000</option><option value="15000">Rp 15.000</option><option value="20000">Rp 20.000</option><option value="25000">Rp 25.000</option><option value="30000">Rp 30.000</option><option value="35000">Rp 35.000</option><option value="40000">Rp 40.000</option><option value="45000">Rp 45.000</option><option value="50000">Rp 50.000</option></select></div><br><br>';		
 	}
 }	
 
