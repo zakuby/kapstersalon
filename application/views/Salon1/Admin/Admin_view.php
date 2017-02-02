@@ -268,10 +268,10 @@ function pajakTotal(e){
 	e.preventDefault()
 	var pajak = Number($("#pajak-harga option:selected").val());
 	if($("#pajak-harga option:selected").val()!=null){
-		var harga = $("#total_table").html();
+		var harga = Number($("#total_invis").html());
 		pajak = harga*(pajak/100);
 		harga = harga + pajak; 
-		document.getElementById('total_table').innerHTML = harga;
+		document.getElementById('total_table').innerHTML = konversRupiah(harga);
 	}
 }
 function saveNota(e){
