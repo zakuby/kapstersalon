@@ -269,13 +269,17 @@ function updateTotal(e){
 	var pajak = Number($("#pajak-harga option:selected").val());
 	var discount = Number($("#discount-harga option:selected").val());
 	var harga = Number($("#total_invis").html());
-	if($("#pajak-harga option:selected").val()!=null){
+	if($("#pajak-harga option:selected").val()!=null && discount!=""){
 		pajak = harga*(pajak/100);
+		harga = harga - discount;
 		harga = harga + pajak; 
 		document.getElementById('total_table').innerHTML = "Rp "+konversRupiah(harga);
-	}
-	if(discount!=""){
+	}else if(discount!=""){
 		harga = harga - discount;
+		document.getElementById('total_table').innerHTML = "Rp "+konversRupiah(harga);
+	}else if($("#pajak-harga option:selected").val()!=null){
+		pajak = harga*(pajak/100);
+		harga = harga + pajak; 
 		document.getElementById('total_table').innerHTML = "Rp "+konversRupiah(harga);
 	}
 	
