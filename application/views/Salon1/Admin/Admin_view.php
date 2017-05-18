@@ -558,8 +558,7 @@ function submitSell(e){
 	console.log(cashierArrID)
 	console.log(kapsterArrProdID)
 	console.log(hargaArr)
-	if(konfirmasiNominal(event)!=false && kapsterArrID!=""){
-		console.log("done")
+	if(kapsterArrID!=""){
 		$.post("<?php echo base_url(); ?>Salon1/Admin/tambah_transaksi",
 		{
 			array_kapster: kapsterArrID,
