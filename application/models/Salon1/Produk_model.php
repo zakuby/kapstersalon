@@ -10,7 +10,8 @@ class Produk_model extends CI_Model {
 						 'harga_SS'=>$this->input->post('harga_SS'),
 						 'harga_S'=>$this->input->post('harga_S'),
 						 'harga_M'=>$this->input->post('harga_M'),
-						 'harga_L'=>$this->input->post('harga_L')
+						 'harga_L'=>$this->input->post('harga_L'),
+						 'harga_XL'=>$this->input->post('harga_XL')
 					);
 		$this->db->insert('produk',$data);
 		if($this->db->affected_rows() > 0) {
@@ -24,8 +25,9 @@ class Produk_model extends CI_Model {
 						 'nama_produk'=>$this->input->post('nama_perawatan'),
 						 'harga_SS'=>$this->input->post('harga_SS'),
 						 'harga_S'=>$this->input->post('harga_S'),
-						 'harga_M'=>$this->input->post('harga_M'),
-						 'harga_L'=>$this->input->post('harga_L')
+						 'harga_L'=>$this->input->post('harga_L'),
+						 'harga_XL'=>$this->input->post('harga_XL'),
+						 'rate'=>$this->input->post('rate')
 					);
 		$this->db->insert('produk',$data);
 	}
