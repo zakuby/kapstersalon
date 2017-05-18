@@ -111,6 +111,12 @@
 							echo '<input value="'.$kapster->rate_kapster.'" type="number" step=any class="form-control" name="rate" placeholder="'.$kapster->rate_kapster.'" required>';
 						?>				
 				</div>
+				<div class="form-group">
+				<label for="exampleInputPassword1" >Rate Low</label><br>
+					    <?php
+							echo '<input value="'.$kapster->rate_kapster_low.'" type="number" step=any class="form-control" name="rate_low" placeholder="'.$kapster->rate_kapster_low.'" required>';
+						?>				
+				</div>
 			<div class="col-lg-4 pull-right">
 				<input type="submit" class="btn btn-primary pull-right"value="Submit">
 			</div>

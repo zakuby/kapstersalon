@@ -6,13 +6,15 @@ class Kapster_model extends CI_Model {
 		}
 	public function create(){
 		$data = array('nama_kapster'=>$this->input->post('nama_kapster'),
-						 'rate_kapster'=>$this->input->post('rate')
+						 'rate_kapster'=>$this->input->post('rate'),
+					'rate_kapster_low'=>$this->input->post('rate_low')
 					);
 		$this->db->insert('kapster',$data);
 	}
 	public function createCashier(){
 		$data = array('nama_cashier'=>$this->input->post('nama_cashier'),
-						 'rate_cashier'=>$this->input->post('rate')
+						 'rate_cashier'=>$this->input->post('rate'),
+						 'rate_cashier_low'=>$this->input->post('rate_low')
 					);
 		$this->db->insert('cashier',$data);
 	}
@@ -34,14 +36,16 @@ class Kapster_model extends CI_Model {
     }	
 	function updateKapster($id){
 		$data = array(	'nama_kapster'=>$this->input->post('nama_kapster'),
-					'rate_kapster'=>$this->input->post('rate')
+					'rate_kapster'=>$this->input->post('rate'),
+					'rate_kapster_low'=>$this->input->post('rate_low')
 		);
 		$this->db->where('id_kapster', $id);
 		$this->db->update('kapster',$data);
 	}
 	function updateCashier($id){
 		$data = array('nama_cashier'=>$this->input->post('nama_cashier'),
-						 'rate_cashier'=>$this->input->post('rate')
+						 'rate_cashier'=>$this->input->post('rate'),
+						 'rate_cashier_low'=>$this->input->post('rate_low')
 		);
 		$this->db->where('id_cashier', $id);
 		$this->db->update('cashier',$data);
