@@ -130,6 +130,7 @@
                 print "<td>";
                 print $kapster->rate_kapster.'%';
                 echo '<td width="10%" align="center">';
+				echo "<a onClick=\"javascript: return confirm('Are you sure to delete ?');\" href='".site_url('Salon1/Admin/hapusKapster/'.$kapster->id_kapster)."' ><button>X</button></a>";
 				echo "<a href='".site_url('Salon1/Admin/editKapster/'.$kapster->id_kapster)."' ><button>Edit</button></a>";
             }
             ?>
