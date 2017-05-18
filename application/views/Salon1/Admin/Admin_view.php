@@ -471,7 +471,7 @@ function addOptionKapster(e){
 function addOptionWajah(e){	
 	$("#select-wajah").append('<div class="parent-product row"><br><div class="col-md-10 col-sm-9 col-xs-8"><select onchange="pilih_produk(this);" class="pilihan-produk form-control kapsterSelection" id="pilihan-produks">'+
 			'<option value=""></option>'+
-				"<<?php
+				"<?php
 					foreach ($pw as $produkw) {
 						echo "<option data-harga='$produkw->harga' data-harga_SS='$produkw->harga_SS' data-harga_S='$produkw->harga_S' data-harga_M='$produkw->harga_M' data-harga_L='$produkw->harga_L' data-jenis='$produkw->jenis_produk' data-produk='$produkw->nama_produk' value='$produkw->id_produk'>$produkw->nama_produk</option>";
 					}
@@ -558,7 +558,8 @@ function submitSell(e){
 	console.log(cashierArrID)
 	console.log(kapsterArrProdID)
 	console.log(hargaArr)
-	if(kapsterArrID!=""){
+	if(konfirmasiNominal(event)!=false && kapsterArrID!=""){
+		console.log("done")
 		$.post("<?php echo base_url(); ?>Salon1/Admin/tambah_transaksi",
 		{
 			array_kapster: kapsterArrID,
