@@ -51,6 +51,7 @@
         <li><a href="<?php echo base_url(); ?>Salon1/Admin/list_produk">List Product</a></li>
         <li><a href="<?php echo base_url(); ?>Salon1/Admin/report_kapster">Report Kapster</a></li>
 		<li><a href="<?php echo base_url(); ?>Salon1/Admin/report_cashier">Report Cashier</a></li>
+		<li><a href="<?php echo base_url(); ?>Salon1/Admin/report_owner">Report Owner</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
