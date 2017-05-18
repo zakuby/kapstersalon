@@ -149,9 +149,10 @@
                 </tr>
 				<tr>
 				  <th style="text-align:center;">SS</td>
-				  <th style="text-align:center;">SS</td>
+				  <th style="text-align:center;">S</td>
 				  <th style="text-align:center;">M</td>
 				  <th style="text-align:center;">L</td>
+				  <th style="text-align:center;">XL</td>
 				</tr>
                 </thead>
                 <tbody>
@@ -171,6 +172,9 @@
 				echo 'Rp. ' . number_format( $produk->harga_M, 0 , '' , '.' ) ; 
 				print "<td>";
 				echo 'Rp. ' . number_format( $produk->harga_L, 0 , '' , '.' ) ; 
+				echo "<td>";
+				print "<td>";
+				echo 'Rp. ' . number_format( $produk->harga_XL, 0 , '' , '.' ) ; 
 				echo "<td>";
 				if($produk->rate!=NULL){
 					echo "Special (".$produk->rate."%)";

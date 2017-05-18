@@ -132,10 +132,16 @@
 							echo '<input value="'.$produk->harga_L.'" type="number" class="form-control" name="harga_L" placeholder="'.$produk->harga_L.'" required>';
 						?>				
 				</div>
+				<div class="form-group">
+				<label for="exampleInputPassword1" >Category XL </label>
+					    <?php
+							echo '<input value="'.$produk->harga_XL.'" type="number" class="form-control" name="harga_XL" placeholder="'.$produk->harga_XL.'" required>';
+						?>				
+				</div>
 				<?php
 					if($produk->rate!=NULL){
 						echo '				<div class="form-group">
-				<label for="exampleInputPassword1" >Rate (%) </label><input value="'.$produk->rate.'" type="number" class="form-control" name="rate" placeholder="'.$produk->rate.'" required></div>';
+				<label for="exampleInputPassword1" >Rate (%) </label><input value="'.$produk->rate.'" type="number" step=any class="form-control" name="rate" placeholder="'.$produk->rate.'" required></div>';
 					}?>
 			<div class="col-lg-4 pull-right">
 				<input type="submit" class="btn btn-primary pull-right"value="Submit">

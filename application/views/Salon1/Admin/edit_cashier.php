@@ -108,7 +108,7 @@
 				<div class="form-group">
 				<label for="exampleInputPassword1" >Rate </label><br>
 					    <?php
-							echo '<input value="'.$cashier->rate_cashier.'" type="text" class="form-control" name="rate" placeholder="'.$cashier->rate_cashier.'" required>';
+							echo '<input value="'.$cashier->rate_cashier.'" type="number" step=any class="form-control" name="rate" placeholder="'.$cashier->rate_cashier.'" required>';
 						?>				
 				</div>
 			<div class="col-lg-4 pull-right">
