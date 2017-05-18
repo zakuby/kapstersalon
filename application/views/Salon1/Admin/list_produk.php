@@ -171,8 +171,7 @@
 				print "<td>";
 				echo 'Rp. ' . number_format( $produk->harga_M, 0 , '' , '.' ) ; 
 				print "<td>";
-				echo 'Rp. ' . number_format( $produk->harga_L, 0 , '' , '.' ) ; 
-				echo "<td>";
+				echo 'Rp. ' . number_format( $produk->harga_L, 0 , '' , '.' ) ;
 				print "<td>";
 				echo 'Rp. ' . number_format( $produk->harga_XL, 0 , '' , '.' ) ; 
 				echo "<td>";
