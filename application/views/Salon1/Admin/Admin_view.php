@@ -482,7 +482,7 @@ function addOptionWajah(e){
 function addOptionRambut(e){	
 	$("#select-rambut").append('<div class="parent-product row"><br><div class="col-md-10 col-sm-9 col-xs-8"><select onchange="pilih_produk(this);" class="pilihan-produk form-control kapsterSelection" id="pilihan-produks">'+
 			'<option value=""></option>'+
-				"<<?php
+				"<?php
 					foreach ($pr as $produkr) {
 						echo "<option data-harga='$produkr->harga' data-harga_SS='$produkr->harga_SS' data-harga_S='$produkr->harga_S' data-harga_M='$produkr->harga_M' data-harga_L='$produkr->harga_L' data-jenis='$produkr->jenis_produk' data-produk='$produkr->nama_produk' value='$produkr->id_produk'>$produkr->nama_produk</option>";
 					}
@@ -492,7 +492,7 @@ function addOptionRambut(e){
 function addOptionTubuh(e){	
 	$("#select-tubuh").append('<div class="parent-product row"><br><div class="col-md-10 col-sm-9 col-xs-8"><select onchange="pilih_produk(this);" class="pilihan-produk form-control kapsterSelection" id="pilihan-produks">'+
 			'<option value=""></option>'+
-				"<<?php
+				"<?php
 					foreach ($pt as $produkt) {
 						echo "<option data-harga='$produkt->harga' data-harga_SS='$produkt->harga_SS' data-harga_S='$produkt->harga_S' data-harga_M='$produkt->harga_M' data-harga_L='$produkt->harga_L' data-jenis='$produkt->jenis_produk' data-produk='$produkt->nama_produk' value='$produkt->id_produk'>$produkt->nama_produk</option>";
 					}
@@ -502,7 +502,7 @@ function addOptionTubuh(e){
 function addOptionPaket(e){	
 	$("#select-paket").append('<div class="parent-product row"><br><div class="col-md-10 col-sm-9 col-xs-8">select onchange="pilih_produk(this);" class="pilihan-produk form-control kapsterSelection" id="pilihan-produks">'+
 			'<option value=""></option>'+
-				"<<?php
+				"<?php
 					foreach ($pp as $produkp) {
 						echo "<option data-harga='$produkp->harga' data-harga_SS='$produkp->harga_SS' data-harga_S='$produkp->harga_S' data-harga_M='$produkp->harga_M' data-harga_L='$produkp->harga_L' data-jenis='$produkp->jenis_produk' data-produk='$produkp->nama_produk' value='$produkp->id_produk'>$produkp->nama_produk</option>";
 					}
