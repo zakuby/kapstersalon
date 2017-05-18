@@ -143,7 +143,7 @@
                 <tr>
                   <th rowspan="2" style="vertical-align: middle;text-align:center;">Jenis Perawatan</th>
                   <th rowspan="2" style="vertical-align: middle;text-align:center;">Nama Perawatan</th>
-                  <th colspan="4" style="text-align:center;">Category</th>
+                  <th colspan="5" style="text-align:center;">Category</th>
 				  <th rowspan="2" style="vertical-align: middle;text-align:center;" align="center">Keterangan</th>
                   <th rowspan="2" style="vertical-align: middle;text-align:center;" align="center">Action</th>
                 </tr>
