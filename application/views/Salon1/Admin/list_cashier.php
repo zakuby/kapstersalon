@@ -117,6 +117,7 @@
                 <tr>
                   <th>Nama Cashier</th>
                   <th>Rate</th>
+				  <th>Rate Low</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -129,6 +130,8 @@
                 print $cashier->nama_cashier;
                 print "<td>";
                 print $cashier->rate_cashier.'%';
+				print "<td>";
+                print $cashier->rate_cashier_low.'%';
                 echo '<td width="10%" align="center">';
 				echo "<a onClick=\"javascript: return confirm('Are you sure to delete ?');\" href='".site_url('Salon1/Admin/hapusCashier/'.$cashier->id_cashier)."' ><button>X</button></a>";
 				echo "<a href='".site_url('Salon1/Admin/editCashier/'.$cashier->id_cashier)."' ><button>Edit</button></a>";

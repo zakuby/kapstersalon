@@ -117,6 +117,7 @@
                 <tr>
                   <th>Nama Kapster</th>
                   <th>Rate</th>
+				  <th>Rate Low</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -129,6 +130,8 @@
                 print $kapster->nama_kapster;
                 print "<td>";
                 print $kapster->rate_kapster.'%';
+				print "<td>";
+                print $cashier->rate_cashier_low.'%';
                 echo '<td width="10%" align="center">';
 				echo "<a onClick=\"javascript: return confirm('Are you sure to delete ?');\" href='".site_url('Salon1/Admin/hapusKapster/'.$kapster->id_kapster)."' ><button>X</button></a>";
 				echo "<a href='".site_url('Salon1/Admin/editKapster/'.$kapster->id_kapster)."' ><button>Edit</button></a>";
