@@ -54,6 +54,14 @@ class Admin extends CI_Controller {
 		redirect('Home','refresh');
 	 }
  }
+ public function report_owner()
+ {
+	 if($this->session->userdata('Level')==3 &&  $_SESSION["salon"]==1){
+		$this->load->view('Salon1/Admin/report_owner.php');
+	 }else{
+		redirect('Home','refresh');
+	 }
+ }
   public function register_produk()
  {
 	 if($this->session->userdata('Level')==3 &&  $_SESSION["salon"]==1){
@@ -93,7 +101,22 @@ class Admin extends CI_Controller {
 		}
 
 	}
-	
+	public function list_report(){
+		if(isset($_POST["date1"])){
+			$_SESSION["first_date"] = $this->input->post('date1');
+		}
+		if(isset($_POST["date2"])){
+			$_SESSION["second_date"] = $this->input->post('date2');
+		}		
+		$this->load->model('Salon1/produk_model');
+		if($transaksi = $this->produk_model->loadTransaksiOwner($_SESSION["first_date"],$_SESSION["second_date"])){
+			$this->load->vars('t', $transaksi);
+			$this->load->view('Salon1/Admin/reports_owner.php');
+		}else{
+			?><script>alert("Transaksi tidak ditemukan");</script><?php
+			redirect('Salon1/Admin/report_owner','refresh');
+		}
+	}
 	public function list_kapster(){
 		$this->load->model('Salon1/kapster_model');
         if($kapster = $this->kapster_model->loadData()){

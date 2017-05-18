@@ -127,6 +127,27 @@ class Produk_model extends CI_Model {
 		return 0;
 	}
 	}
+	public function loadTransaksiOwner($first_date,$second_date){
+		$this->db->select('t.id_transaksi, t.harga, t.id_kapster, t.id_produk, t.tanggal, k.nama_kapster, k.rate_kapster, c.nama_cashier, c.rate_cashier, p.jenis_produk, p.nama_produk, p.rate as rate_produk ');
+		$this->db->from('transaksi t');
+		$this->db->join('kapster k','t.id_kapster = k.id_kapster', 'left outer');
+		$this->db->join('cashier c','t.id_cashier = c.id_cashier', 'left');
+		$this->db->join('produk p','t.id_produk = p.id_produk', 'left');
+		$first_date = DateTime::createFromFormat('d/m/Y', $first_date);
+		$first_date = $first_date->format('Y-m-d');
+		$second_date = DateTime::createFromFormat('d/m/Y', $second_date);
+		$second_date = $second_date->format('Y-m-d');		
+		$this->db->where('t.tanggal >=', $first_date);
+		$this->db->where('t.tanggal <=', $second_date);
+		$this->db->order_by('tanggal','ASC');
+		$query = $this->db->get();
+		
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		} else {
+			return 0;
+		}
+	}
   function updateProduk($id){
 	if($this->input->post('rate')!=""){
 		$data = array(	'nama_produk'=>$this->input->post('nama_perawatan'),
