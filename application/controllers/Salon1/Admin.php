@@ -195,12 +195,12 @@ class Admin extends CI_Controller {
 	public function hapusKapster($idkapster) {
 		$this->load->model('Salon1/kapster_model');
 		$this->kapster_model->delete($idkapster);
-		redirect("Admin/list_kapster", 'refresh');
+		redirect("Salon1/Admin/list_kapster", 'refresh');
 	}
 	public function hapusCashier($idkapster) {
 		$this->load->model('Salon1/kapster_model');
 		$this->kapster_model->deleteCashier($idkapster);
-		redirect("Admin/list_cashier", 'refresh');
+		redirect("Salon1/Admin/list_cashier", 'refresh');
 	}	
 	public function tambah_kapster(){
 		$this->load->database();
