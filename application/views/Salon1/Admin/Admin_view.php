@@ -364,6 +364,7 @@ function pilih_produk(d) {
 	var selected = $(d).find('option:selected');
 	if(selected.val()!=""){
 		$(d).closest(".parent-product").find(".harga-product").html(
+			console.log(selected.data('harga_XL'));
 			'<br><select class="pilihan-harga form-control">'
 			+'<option value="">-Pilih Harga-</option>'
 			+"<option data-ukuran='SS' value='"+selected.data('harga_ss')+"'>SS&nbsp;:&nbsp;Rp "+konversRupiah(selected.data('harga_ss'))+"</option>"
