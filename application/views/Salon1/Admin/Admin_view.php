@@ -364,14 +364,12 @@ function pilih_produk(d) {
 	var selected = $(d).find('option:selected');
 	if(selected.val()!=""){
 		$(d).closest(".parent-product").find(".harga-product").html(
-			console.log(selected.data('harga_XL'));
 			'<br><select class="pilihan-harga form-control">'
 			+'<option value="">-Pilih Harga-</option>'
 			+"<option data-ukuran='SS' value='"+selected.data('harga_ss')+"'>SS&nbsp;:&nbsp;Rp "+konversRupiah(selected.data('harga_ss'))+"</option>"
 			+"<option data-ukuran='S' value='"+selected.data('harga_s')+"'>S&nbsp;&nbsp;&nbsp;:&nbsp;Rp "+konversRupiah(selected.data('harga_s'))+"</option>"
 			+"<option data-ukuran='M' value='"+selected.data('harga_m')+"'>M&nbsp;&nbsp;:&nbsp;Rp "+konversRupiah(selected.data('harga_m'))+"</option>"
 			+"<option data-ukuran='L' value='"+selected.data('harga_l')+"'>L&nbsp;&nbsp;&nbsp;:&nbsp;Rp "+konversRupiah(selected.data('harga_l'))+"</option>"
-			+"<option data-ukuran='XL' value='"+selected.data('harga_XL')+"'>L&nbsp;&nbsp;&nbsp;:&nbsp;Rp "+konversRupiah(selected.data('harga_XL'))+"</option>"
 			+"</select>"
 		)	
 	}else{
