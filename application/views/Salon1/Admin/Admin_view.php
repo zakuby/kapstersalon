@@ -468,11 +468,11 @@ function addOptionKapster(e){
 			)
 }
 function addOptionWajah(e){	
-	$("#select-wajah").append('<div class="parent-product row"><br><div class="col-md-10 col-sm-9 col-xs-8"><select onchange="pilih_produk(this);" class="pilihan-produk form-control kapsterSelection" id="pilihan-produks">'+'<option value=""></option>'+'<?php
+	$("#select-wajah").append('<div class="parent-product row"><br><div class="col-md-10 col-sm-9 col-xs-8"><select onchange="pilih_produk(this);" class="pilihan-produk form-control kapsterSelection" id="pilihan-produks">'+'<option value=""></option>'+<?php
 					foreach ($pw as $produkw) {
 						echo "<option data-harga='$produkw->harga' data-harga_SS='$produkw->harga_SS' data-harga_S='$produkw->harga_S' data-harga_M='$produkw->harga_M' data-harga_L='$produkw->harga_L' data-jenis='$produkw->jenis_produk' data-produk='$produkw->nama_produk' value='$produkw->id_produk'>$produkw->nama_produk</option>";
 					}
-				?>'+"</select></div><div class='col-md-1 col-sm-1 col-xs-1'><button href='#' class='btn btn-primary' onclick='deleteOption(event,this)' >-</button></div><div class='harga-product col-md-10 col-sm-9 col-xs-8'></div></div>"
+				?>+"</select></div><div class='col-md-1 col-sm-1 col-xs-1'><button href='#' class='btn btn-primary' onclick='deleteOption(event,this)' >-</button></div><div class='harga-product col-md-10 col-sm-9 col-xs-8'></div></div>"
 			)
 }
 function addOptionRambut(e){	
