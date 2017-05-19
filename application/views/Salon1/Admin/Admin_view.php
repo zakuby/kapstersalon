@@ -107,7 +107,7 @@
 					<option value=""></option>
 						<?php
 							foreach ($pr as $produkr) {
-								echo "<option data-harga='$produkr->harga' data-harga_SS='$produkr->harga_SS' data-harga_S='$produkr->harga_S' data-harga_M='$produkr->harga_M' data-harga_L='$produkr->harga_L' data-jenis='$produkr->jenis_produk' data-produk='$produkr->nama_produk' value='$produkr->id_produk'>$produkr->nama_produk</option>";
+								echo "<option data-harga_XL='$produkr->harga_XL' data-harga_SS='$produkr->harga_SS' data-harga_S='$produkr->harga_S' data-harga_M='$produkr->harga_M' data-harga_L='$produkr->harga_L' data-jenis='$produkr->jenis_produk' data-produk='$produkr->nama_produk' value='$produkr->id_produk'>$produkr->nama_produk</option>";
 							}
 						?>
 					</select>
@@ -126,7 +126,7 @@
 					<option value=""></option>
 						<?php
 							foreach ($pw as $produkw) {
-								echo "<option data-harga='$produkw->harga' data-harga_SS='$produkw->harga_SS' data-harga_S='$produkw->harga_S' data-harga_M='$produkw->harga_M' data-harga_L='$produkw->harga_L' data-jenis='$produkw->jenis_produk' data-produk='$produkw->nama_produk' value='$produkw->id_produk'>$produkw->nama_produk</option>";
+								echo "<option data-harga_XL='$produkw->harga_XL' data-harga_SS='$produkw->harga_SS' data-harga_S='$produkw->harga_S' data-harga_M='$produkw->harga_M' data-harga_L='$produkw->harga_L' data-jenis='$produkw->jenis_produk' data-produk='$produkw->nama_produk' value='$produkw->id_produk'>$produkw->nama_produk</option>";
 							}
 						?>
 					</select>
@@ -145,7 +145,7 @@
 					<option value=""></option>
 						<?php
 							foreach ($pt as $produkt) {
-								echo "<option data-harga='$produkt->harga' data-harga_SS='$produkt->harga_SS' data-harga_S='$produkt->harga_S' data-harga_M='$produkt->harga_M' data-harga_L='$produkt->harga_L' data-jenis='$produkt->jenis_produk' data-produk='$produkt->nama_produk' value='$produkt->id_produk'>$produkt->nama_produk</option>";
+								echo "<option data-harga_XL='$produkt->harga_XL' data-harga_SS='$produkt->harga_SS' data-harga_S='$produkt->harga_S' data-harga_M='$produkt->harga_M' data-harga_L='$produkt->harga_L' data-jenis='$produkt->jenis_produk' data-produk='$produkt->nama_produk' value='$produkt->id_produk'>$produkt->nama_produk</option>";
 							}
 						?>
 					</select>
@@ -164,7 +164,7 @@
 					<option value=""></option>
 						<?php
 							foreach ($pp as $produkp) {
-								echo "<option data-harga='$produkp->harga' data-harga_SS='$produkp->harga_SS' data-harga_S='$produkp->harga_S' data-harga_M='$produkp->harga_M' data-harga_L='$produkp->harga_L' data-jenis='$produkp->jenis_produk' data-produk='$produkp->nama_produk' value='$produkp->id_produk'>$produkp->nama_produk</option>";
+								echo "<option data-harga_XL='$produkp->harga_XL' data-harga_SS='$produkp->harga_SS' data-harga_S='$produkp->harga_S' data-harga_M='$produkp->harga_M' data-harga_L='$produkp->harga_L' data-jenis='$produkp->jenis_produk' data-produk='$produkp->nama_produk' value='$produkp->id_produk'>$produkp->nama_produk</option>";
 							}
 						?>
 					</select>
@@ -370,6 +370,7 @@ function pilih_produk(d) {
 			+"<option data-ukuran='S' value='"+selected.data('harga_s')+"'>S&nbsp;&nbsp;&nbsp;:&nbsp;Rp "+konversRupiah(selected.data('harga_s'))+"</option>"
 			+"<option data-ukuran='M' value='"+selected.data('harga_m')+"'>M&nbsp;&nbsp;:&nbsp;Rp "+konversRupiah(selected.data('harga_m'))+"</option>"
 			+"<option data-ukuran='L' value='"+selected.data('harga_l')+"'>L&nbsp;&nbsp;&nbsp;:&nbsp;Rp "+konversRupiah(selected.data('harga_l'))+"</option>"
+			+"<option data-ukuran='XL' value='"+selected.data('harga_XL')+"'>L&nbsp;&nbsp;&nbsp;:&nbsp;Rp "+konversRupiah(selected.data('harga_XL'))+"</option>"
 			+"</select>"
 		)	
 	}else{
@@ -473,7 +474,7 @@ function addOptionWajah(e){
 			'<option value=""></option>'+
 				"<?php
 					foreach ($pw as $produkw) {
-						echo "<option data-harga='$produkw->harga' data-harga_SS='$produkw->harga_SS' data-harga_S='$produkw->harga_S' data-harga_M='$produkw->harga_M' data-harga_L='$produkw->harga_L' data-jenis='$produkw->jenis_produk' data-produk='$produkw->nama_produk' value='$produkw->id_produk'>$produkw->nama_produk</option>";
+						echo "<option data-harga_XL='$produkw->harga_XL' data-harga_SS='$produkw->harga_SS' data-harga_S='$produkw->harga_S' data-harga_M='$produkw->harga_M' data-harga_L='$produkw->harga_L' data-jenis='$produkw->jenis_produk' data-produk='$produkw->nama_produk' value='$produkw->id_produk'>$produkw->nama_produk</option>";
 					}
 				?>"+
 			"</select></div><div class='col-md-1 col-sm-1 col-xs-1'><button href='#' class='btn btn-primary' onclick='deleteOption(event,this)' >-</button></div><div class='harga-product col-md-10 col-sm-9 col-xs-8'></div></div>"
@@ -484,7 +485,7 @@ function addOptionRambut(e){
 			'<option value=""></option>'+
 				"<?php
 					foreach ($pr as $produkr) {
-						echo "<option data-harga='$produkr->harga' data-harga_SS='$produkr->harga_SS' data-harga_S='$produkr->harga_S' data-harga_M='$produkr->harga_M' data-harga_L='$produkr->harga_L' data-jenis='$produkr->jenis_produk' data-produk='$produkr->nama_produk' value='$produkr->id_produk'>$produkr->nama_produk</option>";
+						echo "<option data-harga_XL='$produkr->harga_XL' data-harga_SS='$produkr->harga_SS' data-harga_S='$produkr->harga_S' data-harga_M='$produkr->harga_M' data-harga_L='$produkr->harga_L' data-jenis='$produkr->jenis_produk' data-produk='$produkr->nama_produk' value='$produkr->id_produk'>$produkr->nama_produk</option>";
 					}
 				?>"+
 			"</select></div><div class='col-md-1 col-sm-1 col-xs-1'><button href='#' class='btn btn-primary' onclick='deleteOption(event,this)' >-</button></div><div class='harga-product col-md-10 col-sm-9 col-xs-8'></div></div>"			)
@@ -494,7 +495,7 @@ function addOptionTubuh(e){
 			'<option value=""></option>'+
 				"<?php
 					foreach ($pt as $produkt) {
-						echo "<option data-harga='$produkt->harga' data-harga_SS='$produkt->harga_SS' data-harga_S='$produkt->harga_S' data-harga_M='$produkt->harga_M' data-harga_L='$produkt->harga_L' data-jenis='$produkt->jenis_produk' data-produk='$produkt->nama_produk' value='$produkt->id_produk'>$produkt->nama_produk</option>";
+						echo "<option data-harga_XL='$produkt->harga_XL' data-harga_SS='$produkt->harga_SS' data-harga_S='$produkt->harga_S' data-harga_M='$produkt->harga_M' data-harga_L='$produkt->harga_L' data-jenis='$produkt->jenis_produk' data-produk='$produkt->nama_produk' value='$produkt->id_produk'>$produkt->nama_produk</option>";
 					}
 				?>"+
 			"</select></div><div class='col-md-1 col-sm-1 col-xs-1'><button href='#' class='btn btn-primary' onclick='deleteOption(event,this)' >-</button></div><div class='harga-product col-md-10 col-sm-9 col-xs-8'></div></div>"			)
@@ -504,7 +505,7 @@ function addOptionPaket(e){
 			'<option value=""></option>'+
 				"<?php
 					foreach ($pp as $produkp) {
-						echo "<option data-harga='$produkp->harga' data-harga_SS='$produkp->harga_SS' data-harga_S='$produkp->harga_S' data-harga_M='$produkp->harga_M' data-harga_L='$produkp->harga_L' data-jenis='$produkp->jenis_produk' data-produk='$produkp->nama_produk' value='$produkp->id_produk'>$produkp->nama_produk</option>";
+						echo "<option data-harga_XL='$produkp->harga_XL' data-harga_SS='$produkp->harga_SS' data-harga_S='$produkp->harga_S' data-harga_M='$produkp->harga_M' data-harga_L='$produkp->harga_L' data-jenis='$produkp->jenis_produk' data-produk='$produkp->nama_produk' value='$produkp->id_produk'>$produkp->nama_produk</option>";
 					}
 				?>"+
 			"</select></div><div class='col-md-1 col-sm-1 col-xs-1'><button href='#' class='btn btn-primary' onclick='deleteOption(event,this)' >-</button></div><div class='harga-product col-md-10 col-sm-9 col-xs-8'></div></div>"			)
