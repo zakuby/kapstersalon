@@ -429,10 +429,15 @@ function submitSelection(e){
 	})
 }	
 function konversRupiah(price){
-	var reverse = price.toString().split('').reverse().join(''),
+	if(price!=null){
+		var reverse = price.toString().split('').reverse().join(''),
 		ribuan 	= reverse.match(/\d{1,3}/g);
 		ribuan	= ribuan.join('.').split('').reverse().join('');	
 		return ribuan;
+	}else{
+		return 0;
+	}
+	
 	
 }
 
@@ -501,7 +506,7 @@ function addOptionTubuh(e){
 			"</select></div><div class='col-md-1 col-sm-1 col-xs-1'><button href='#' class='btn btn-primary' onclick='deleteOption(event,this)' >-</button></div><div class='harga-product col-md-10 col-sm-9 col-xs-8'></div></div>"			)
 }
 function addOptionPaket(e){	
-	$("#select-paket").append('<div class="parent-product row"><br><div class="col-md-10 col-sm-9 col-xs-8">select onchange="pilih_produk(this);" class="pilihan-produk form-control kapsterSelection" id="pilihan-produks">'+
+	$("#select-paket").append('<div class="parent-product row"><br><div class="col-md-10 col-sm-9 col-xs-8"><select onchange="pilih_produk(this);" class="pilihan-produk form-control kapsterSelection" id="pilihan-produks">'+
 			'<option value=""></option>'+
 				"<?php
 					foreach ($pp as $produkp) {
